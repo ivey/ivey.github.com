@@ -1,9 +1,0 @@
---- 
-title: Dish Rag Tag
-layout: post
----
-So for the past few days I've been spending a few (hah) cycles on a little project for Emily, <a href="http://dishragtag.yarnmiracle.com">Dish Rag Tag</a>.  Signups are already closed, so you can't see the pretty form she mocked up, but it's a neat little app.  It's just People and Teams so far in terms of models, but it's been fun to work on.
-
-<a href="http://yarnmiracle.com/2007/06/12/dish-rag-tag/">Her original blog post from Tuesday</a>.
-
-<a href="http://yarnmiracle.com/2007/06/15/full-to-the-brim/">Four days later, closing signups with 200 people, plus 10 on Team Canada</a>.

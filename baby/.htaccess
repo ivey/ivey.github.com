@@ -1,6 +1,0 @@
-
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^baby.gweezlebur.com$ [OR]
-RewriteCond %{HTTP_HOST} ^www.baby.gweezlebur.com$
-RewriteRule ^/?(.*)$ http://ellieivey.com/$1 [R=301,L]
-

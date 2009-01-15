@@ -1,5 +1,0 @@
---- 
-title: Merb Monday
-layout: post
----
-"jp_n9":http://jit.nuance9.com/ from #merb has started a series he calls "Merb Monday":http://jit.nuance9.com/2008/02/merb-faqs-environment-variables.html where he compiles questions and answers from the IRC channel.  This is an awesome idea.  I was thinking last night that we needed a "Kernel Traffic" style summary for Merb stuff, and this is an excellent start!  Go subscribe, or just check it out on Mondays.

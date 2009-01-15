@@ -1,9 +1,0 @@
---- 
-title: Ruby Hoedown
-layout: post
----
-I just registered for "the Ruby Hoedown":http://www.rubyhoedown.com/ in August.
-
-I decided not to go to RailsConf this year because it was a long way away, and was going to be very big.  The Hoedown is (relatively) close and small.
-
-There's also a Significant Others event, which is a cool idea, and I hope that turns out well.

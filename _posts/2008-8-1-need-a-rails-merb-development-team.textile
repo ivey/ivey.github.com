@@ -1,5 +1,0 @@
---- 
-title: Need a Rails/Merb development team?
-layout: post
----
-I haven't been actively looking for clients with Ivey & Brown for a while.  Between existing work and Divvs, we've kept pretty busy.  For the next month or so, though, Don and I have some time to take on a new client or two.  If you know anyone who needs a pair of really good developers (we can scale to a team of 4 or 5 if needed) for a Ruby, Rails or Merb project, let me know.  We offer a pretty good referral fee, too.
