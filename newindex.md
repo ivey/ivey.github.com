@@ -9,12 +9,12 @@
       Software engineer. Video game maker. RPG enthusiast. Wrangler of cats. Girl Scout.
     </p>
 
-      - <a href="/elsewhere/">Find me elsewhere</>
-      - <a href="/archive.html">old blog archive 2007-2011</a>
-      - <a href="/pooh.html"><i>Tao of Pooh</i> quotes page I've been dragging around since 1999</a>
-      - <a href="/poem.html"><i>Poem for Jen</i>, the origin of Gweezlebur</a>
-      - <a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a>
-      - More to come soon?<
+- <a href="/elsewhere/">Find me elsewhere</a>
+- <a href="/archive.html">old blog archive 2007-2011</a>
+- <a href="/pooh.html"><i>Tao of Pooh</i> quotes page I've been dragging around since 1999</a>
+- <a href="/poem.html"><i>Poem for Jen</i>, the origin of Gweezlebur</a>
+- <a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a>
+- More to come soon?<
 
     <ul style="display:none;">
       <li><a class="u-uid u-url" href="https://gweezlebur.com">web</a></li>
