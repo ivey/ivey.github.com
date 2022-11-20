@@ -1,0 +1,340 @@
+#!/usr/bin/perl
+
+# blog: a utility to run a weblog
+#
+# Copyright (C) 1999   Michael D. Ivey  <ivey@gweezlebur.com>
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+# DEFINES
+$BDIR="/home/ivey/weblog";
+$DDIR="/home/ivey/public_html/weblog";
+$KEEPNUM=5;
+$ENV{TZ} = "EST5EDT";
+
+
+use File::Basename;
+use File::Copy "cp";
+use Getopt::Long;
+$Getopt::Long::autoabbrev = 1;
+
+$ARGC = basename($0);
+
+$VERSIONSTR="0.1";
+$USAGEMSG = "Usage: $ARGC [--help] [--version] [--refresh]\"";
+
+# GetOpt::Long doesn't like -?, so do this first.
+&usage if (($ARGV[0] eq "-?") || ($ARGV[0] eq "?"));
+
+## Pull in the options, overwriting the DEFINES if need be...
+&GetOptions("help",     => \$HELP,
+            "version",  => \$VERSION,
+	    "refresh", 	=> \$REFRESH,
+	    "noarchive",	=> \$NOARCHIVE,
+);
+
+# Duh.
+&help if ($HELP);
+&version if ($VERSION);
+
+if ($REFRESH) {
+    print "refreshing blog...\n";
+    &refresh;
+    exit(0);
+}
+
+# read in the array
+@BLOGAR=(<STDIN>);
+
+# parse the lines
+for (@BLOGAR) {
+
+# swiped these from newwwsboy, the flutterby.com script, and then added
+# some of my own
+
+# clear up special characters
+    $_ =~ s#\&([^a-zA-Z\#])#\&amp\;$1#sg;
+#     $_ =~ s/>/\&gt\;/sg;
+#     $_ =~ s/</\&lt;/sg;
+
+
+# change "/." into a real link
+    $_ =~ s#(^|\s)/\.(\s|$)#$1<a href="http://slashdot.org">/\.</a>$2#sg;
+    $_ =~ s#(^|\s)slashdot(\s|$)#$1<a href="http://slashdot.org">slashdot</a>$2#sg;
+# jen into link (whim and vinegar)
+    $_ =~ s#(^|\s)jen(\s|$)#$1<a href="http://gooddeed.net/blog/">jen</a>$2#sg;
+# scott into link 
+    $_ =~ s#(^|\s)scott(\s|$)#$1<a href="http://gooddeed.net/tos/">scott</a>$2#sg;
+# google into link
+    $_ =~ s#(^|\s)google(\s|$)#$1<a href="http://google.com">google</a>$2#sg;
+# NTK into link
+    $_ =~ s#(^|\s)NTK(\s|$)#$1<a href="http://www.ntk.net">NTK</a>$2#sg;
+# chris into link
+    $_ =~ s#(^|\s)chris(\s|$)#$1<a href="http://www.mindspring.com/~plucky/">chris</a>$2#sg;
+# joshy into link
+    $_ =~ s#(^|\s)joshy(\s|$)#$1<a href="http://marinacci.org/~joshy/">joshy</a>$2#sg;
+# jessamyn into link
+    $_ =~ s#(^|\s|\()jessamyn(\s|,|\)|$)#$1<a href="http://www.jessamyn.com/journal/">jessamyn</a>$2#sg;
+# debian into link
+    $_ =~ s#(^|\s|\()debian(\s|,|\)|$)#$1<a href="http://www.debian.org">debian</a>$2#sg;
+# mefi into link 
+    $_ =~ s#(^|\s)mefi(\s|$)#$1<a href="http://www.metafilter.com">MeFi</a>$2#sg;
+# craigs into link 
+    $_ =~ s#(^|\s)craigs(\s|$)#$1<a href="http://atlanta.craigslist.org">craigslist</a>$2#sg;
+# filepile into link
+    $_ =~ s#(^|\s)filepile(\s|$)#$1<a href="http://filepile.org">filepile</a>$2#sg;
+
+
+# change _TEXT_ (url) into a link
+    $_ =~ s/(^|\s)_([A-Za-z0-9].*?[A-Za-z0-9'!\?])_\s+\((http:.*?)\)([\s,.\;\:\!\?]|$)
+	/$1<a\ href="$3">$2\<\/a>$4/sgx;
+    $_ =~ s/(^|\s)_([A-Za-z0-9].*?[A-Za-z0-9'!\?])_\s+\((mailto:.*?)\)([\s,.\;\:\!\?]|$)
+	/$1<a\ href="$3">$2\<\/a>$4/sgx;
+# change _TEXT_ into <b><i>text</b></i>
+    while ($_ =~ /(^|.* )_([A-Za-z][^_]*[A-Za-z'!\?0-9])_([,.\!\?\:\; ].*|$)/sg)
+    {
+	$_ = $1.&mkbi($2).$3;
+    }
+
+# parse http:// into links
+    $_ =~ s/(^|[^""])(http:[^" ]*[^",.\;\:\!\?\n) ])/$1<a href="$2">$2<\/a>/sg;
+# parse ftp:// into links
+    $_ =~ s/(^|[^""])(ftp:[^" ]*[^",.\;\:\!\?\n) ])/$1<a href="$2">$2<\/a>/sg;
+# mailto:address
+    $_ =~ s/(^|[^""])mailto:(\S+)/$1<a href="mailto:$2">\&lt\;$2\&gt\;<\/a>/sg;
+
+# WikiNames
+    $_ =~ s#\[(.*)\]#<a href="http://gweezlebur.com/GweezleWiki/$1">$1</a>#sg;
+
+# blank lines into <p>
+    $_ =~ s/^$/<p>/sg;
+
+}
+
+# array is now ready for writing
+
+($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst)=localtime();
+$tday = (sun,mon,tue,wed,thu,fri,sat)[$wday];
+$tmonth = (january,february,march,april,may,june,july,august,september,october,november,december)[$mon];
+
+if ($min < 10) {
+    $min = "0$min";
+}
+
+$mon++;
+if ($mon < 10) {
+    $mon = "0$mon";
+}
+
+if ($mday < 10) {
+    $mday = "0$mday";
+}
+
+$year += 1900;
+
+$today = "$tday, $tmonth $mday, $year";
+
+print "blogging...";
+
+if (! -e "$BDIR/days/$year$mon$mday") {
+    print "new day: $year$mon$mday\n";
+    open(DAYFOOT,"$BDIR/templates/dayfoot") or die "Cannot read day footer: $?";
+    open(TODAY,">$BDIR/days/$year$mon$mday") or die "Cannot write today: $?";
+    for(@BLOGAR) {
+	print TODAY;
+    }
+    for(<DAYFOOT>) {
+	print TODAY;
+    }
+    close DAYFOOT;
+    close TODAY;
+    open(TODAYHEAD,">$BDIR/days/$year$mon$mday.head") or die "Cannot write today: $?";
+    open(DAYHEAD,"$BDIR/templates/dayhead") or die "Cannot read day header: $?";
+    for(<DAYHEAD>) {
+	$_ =~ s#--DATESTAMP--#<a href="http://gweezlebur.com/~ivey/weblog/archive/archive-$year$mon$mday.shtml"><img src="/~ivey/images/link.gif" border=0 align=right></a> $today#;
+	print TODAYHEAD;
+    }
+    close TODAYHEAD;
+    close DAYHEAD;
+} else {
+    print "\n";
+    open(TODAY,">$BDIR/days/$year$mon$mday.new") 
+      or die "Cannot write new file: $?";
+    for(@BLOGAR) {
+	print TODAY;
+    }
+    print TODAY "\n<center><font size=\"+2\" color=\"\#103d00\">--<\/font><\/center>\n\n";
+    open(OLDTODAY,"$BDIR/days/$year$mon$mday")
+      or die "Cannot open previous version of today: $?";
+    for(<OLDTODAY>) {
+	print TODAY;
+    }
+    close OLDTODAY;
+    close TODAY;
+
+    cp("$BDIR/days/$year$mon$mday","$BDIR/days/$year$mon$mday.bak")
+      or die "Cannot backup before write: $?";
+    cp("$BDIR/days/$year$mon$mday.new","$BDIR/days/$year$mon$mday")
+      or die "Cannot copy new file into place: $?";
+    unlink("$BDIR/days/$year$mon$mday.new")
+      or warn "Cannot cleanup .new file: $?";
+}
+&refresh;
+
+exit(0);
+
+# Subroutines live below here
+
+sub usage {
+    die "$USAGEMSG\n";
+}
+
+sub help {
+    print "$USAGEMSG\n";
+    print "\nMore help to come.\n";
+    exit(0);
+}
+
+sub version {
+    print << "EOGPL";
+-------------------------------------------------------------------
+$ARGC version $VERSIONSTR
+-------------------------------------------------------------------
+Copyright (C) 1999  Michael D. Ivey <ivey\@gweezlebur.com>
+This is free software, as in free speech, not free beer.  You can 
+redistribute it and/or modify it under the terms of the GNU General 
+Public License as published by the Free Software Foundation; either 
+version 2 of the License, or (at your option) any later version.
+
+$ARGC is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+See the GNU General Public License for more details.
+EOGPL
+    exit(0);
+}
+
+sub mkbi {
+    $reference = shift;
+    $out = "<b><i>$reference</i></b>";
+    return $out;
+}
+
+sub refresh {
+    cp("$BDIR/blog.shtml","$BDIR/blog.bak") or die "Cannot backup blog file: $?";
+    open(BLOG,">$BDIR/blog.shtml");
+
+    open(PGHEAD,"$BDIR/templates/pghead") or die "Cannot read page header: $?";
+    for(<PGHEAD>) {
+	$_ =~ s/--TITLE--/my dog wants to be on the radio: current edition/;
+	$_ =~ s/--DESC--/weblog: current edition/;
+	print BLOG $_;
+    }
+    close PGHEAD;
+
+    opendir(DAYS, "$BDIR/days/") or die "Cannot open days directory: $?";
+    @alldays = sort {$b cmp $a} grep /^\d\d\d\d\d\d\d\d$/, readdir DAYS;
+    closedir DAYS;
+
+    for (@alldays) {
+	push (@procdays,"$_");
+    }
+
+#     @alldays = sort {$b cmp $a} @alldays;
+    @days = splice(@alldays, 0, $KEEPNUM);
+
+    foreach $day (@days) {
+	if (-e "$BDIR/days/$day") {
+	    open(DAYHEAD,"$BDIR/days/$day.head") or die "Cannot open dayhead $day: $?";
+	    for(<DAYHEAD>) {
+		print BLOG $_;
+	    }
+	    close DAYHEAD;
+	    open(DAY,"$BDIR/days/$day") or die "Cannot open day $day: $?";
+	    for(<DAY>) {
+		print BLOG $_;
+	    }
+	    close DAY;
+	    print BLOG "&nbsp;\n";
+	}
+    }
+
+    open(PGFOOT,"$BDIR/templates/pgfoot") or die "Cannot read page footer: $?";
+    for(<PGFOOT>) {
+	$_ =~ s/--BACKLINK--/<a href=\"\/~ivey\/index\.shtml\">home<\/a>/;
+	$_ =~ s/--SHT_TITLE--/weblog: current edition/;
+	print BLOG $_;
+    }
+    close PGFOOT;
+    close BLOG;
+
+    system("cp $BDIR/blog.shtml $BDIR/index.shtml");
+    system("cp $BDIR/index.shtml $BDIR/list.inc $DDIR");
+    &archive(@procdays);
+    if (scalar(@alldays)) {
+	&clean(@alldays);
+    }
+}
+
+sub archive {
+    if ($NOARCHIVE) { return; }
+    my @archive = @_;
+    foreach $day (@archive) {
+	open(BLOG,">$BDIR/archive/archive-$day.shtml");
+
+	open(PGHEAD,"$BDIR/templates/pghead") or die "Cannot read page header: $?";
+	for(<PGHEAD>) {
+	    $_ =~ s/--TITLE--/my dog wants to be on the radio: archive for $day/;
+	    $_ =~ s/--DESC--/weblog: archive for $day/;
+	    print BLOG $_;
+	}
+	close PGHEAD;
+
+	open(DAYHEAD,"$BDIR/days/$day.head") or die "Cannot open dayhead $day: $?";
+	for(<DAYHEAD>) {
+	    print BLOG $_;
+	}
+	close DAYHEAD;
+	open(DAY,"$BDIR/days/$day") or die "Cannot open day $day: $?";
+	for(<DAY>) {
+	    print BLOG $_;
+	}
+	close DAY;
+	print BLOG "&nbsp;\n";
+
+	open(PGFOOT,"$BDIR/templates/pgfoot") or die "Cannot read page footer: $?";
+	for(<PGFOOT>) {
+	    $_ =~ s/--BACKLINK--/<a href=\"\/~ivey\/weblog\/">weblog<\/a>/;
+	    $_ =~ s/--SHT_TITLE--/weblog: archive for $day/;
+	    print BLOG $_;
+	}
+	close PGFOOT;
+	close BLOG;
+
+	system("cp $BDIR/archive/archive-$day.shtml $DDIR/archive");
+    }
+}
+
+sub clean {
+    if ($NOARCHIVE) { return; }
+    my @archive = @_;
+    foreach $day (@archive) {
+	unlink("$BDIR/days/$day");
+	unlink("$BDIR/days/$day.head");
+	unlink("$BDIR/days/$day.bak");
+    }
+}
+
+# :vim:ts=4:sw=4
