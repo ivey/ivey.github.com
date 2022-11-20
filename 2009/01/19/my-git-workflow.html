@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>My Git Workflow</title>
+   <meta name="author" content="Michael D. Ivey" />
+
+   <!-- Feeds -->
+   <link rel="alternate" type="application/rss+xml" title="Atom" href="http://feeds2.feedburner.com/gweezlebur" />
+   <link rel="alternate" type="application/rss+xml" title="Comments" href="http://gweezlebur.disqus.com/comments.rss" />
+   <link rel="alternate" type="application/rss+xml" title="Everything" href="http://everything.gweezlebur.com/rss" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/boastful.css" type="text/css" />
+
+   <!-- OpenID -->
+   <link rel="openid.server"
+         href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate"
+         href="http://ivey.myopenid.com/" />
+   <link rel="openid2.local_id"
+         href="http://ivey.myopenid.com" />
+   <link rel="openid2.provider"
+         href="http://www.myopenid.com/server" />
+   <meta http-equiv="X-XRDS-Location"
+         content="http://www.myopenid.com/xrds?username=ivey.myopenid.com" />
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/jquery.boastful.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('#boastful').boastful();
+     });
+   </script>
+   
+</head>
+<body>
+<div id="container">
+  <div id="header">
+  <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+  <h2>Michael Ivey, blogging since '99</h2>
+  </div>
+  
+  <ul id="feeds">
+    <li><a href="/">Home</a></li>
+    <li><a href="http://everything.gweezlebur.com">Everything</a></li>
+    <li><a href="/contact">Contact</a></li>
+<!--    <li><a href="/pages">Pages</a></li>
+    <li><a href="/files">Files</a></li> /-->
+    <li><a href="/archive.html">Archive</a></li>
+  </ul>
+
+  <div id="content">
+    <div class="hentry" id="article-/2009/01/19/my-git-workflow">
+  <h2>
+    <abbr class="published" title="2009-01-19T00:00:00+00:00">Monday, January 19, 2009</abbr>
+  </h2>
+  <div class="post blog">
+  <h1 class="entry-title"><a href="/2009/01/19/my-git-workflow.html">My Git Workflow</a></h1>
+  <div class="entry-content">
+    <p>Lately I&#8217;ve been acting as the unofficial <a href='http://git-scm.com'>Git</a> consultant for <a href='http://skribit.com'>Skribit</a>, usually in response to <a href='http://twitter.com/Stammy'>@Stammy</a> saying something on Twitter along the lines of &#8220;Hey, git just did something totally nonintuitive and now I can&#8217;t figure out what to do next.&#8221; I&#8217;ve been using Git long enough to know the answer, usually, or at least to be able to figure it out, plus I still remember how people used to SVN think, which helps.</p>
+<div style='text-align:center;margin:0 auto;width:440px'>
+<p><img src='http://twictur.es/i/1109499437.gif' /></p>
+<p>image provided by <a href='http://twictur.es'>twictur.es</a> | original tweet <a href='http://twitter.com/Stammy/statuses/1109499437'>here</a></p>
+</div>
+<p>I think I&#8217;ve mentioned before how much I love Git. I&#8217;ve been a version control geek for a <strong>really</strong> long time: I remember getting way too excited about a feature that was like &#8216;git cherry-pick&#8217; in some proprietary VCS we evaluated in 2000 or 2001. I still say that Darcs is the one I wish we had settled on, but I&#8217;ve grown to love Git over the past year or so, especially with <a href='http://github.com'>GitHub</a> making some of the rough spots so much easier.</p>
+
+<p>The thing that&#8217;s hard about Git for most people is the same thing that&#8217;s hard about all <a href='http://en.wikipedia.org/wiki/Distributed_revision_control'>DVCS</a> tools: if you&#8217;re used to centralized systems, they work weird. GitHub doesn&#8217;t actually help with this: it&#8217;s really easy to use Git+GitHub like SVN, and not take full advantage of all the cool stuff you get in a DVCS. It&#8217;s also really easy to never grok DVCS, so when something unusual happens, you don&#8217;t know how to fix it.</p>
+
+<p>There are lots of really good articles to help you get Git, and I&#8217;m not going to try to duplicate them, nor am I going to make you a comprehensive list. Ask in the comments if you can&#8217;t find what you need, and feel free to share good resources in the comments as well. One I&#8217;ll throw out there now is <a href='http://eagain.net/articles/git-for-computer-scientists/'>Git for Computer Scientists</a> &#8230; if you want to really know what Git is doing, this is the way to go.</p>
+
+<p>What I <em>will</em> do is give you a snapshot of my personal Git workflow(s). I have several, depending on the kind of project.</p>
+
+<h2 id='small_team_one_or_two_person_project'>Small team: one or two person project</h2>
+
+<p>A lot of my projects involve either just me, or me and Don, or me and someone else. For these projects I don&#8217;t usually take much advantage of the power of Git. It goes something like this.</p>
+
+<ul>
+<li><code>git pull</code></li>
+
+<li>Hack some stuff</li>
+
+<li><code>git commit -a -m &quot;hacked some stuff&quot;</code></li>
+
+<li><code>git push</code></li>
+</ul>
+
+<p>I rarely use <a href='http://www.kernel.org/pub/software/scm/git/docs/howto/separating-topic-branches.txt'>topic branches</a> when I&#8217;m in this mode, and I don&#8217;t pay too much attention to keeping a clean commit history. In short, I use it alot like I would use SVN.</p>
+
+<p>Every now and then I&#8217;ll get distracted by a quick bug fix when I have a bunch of code I don&#8217;t want to commit yet. That&#8217;s where stashing comes in.</p>
+
+<ul>
+<li><code>git stash</code> (all my changes are saved away, and I have a clean tree)</li>
+
+<li>Fix the bug</li>
+
+<li><code>git commit -a -m &quot;bugfix&quot;</code></li>
+
+<li><code>git stash pop</code> (changes are back)</li>
+
+<li>Continue where I left off</li>
+</ul>
+
+<h2 id='larger_team'>Larger team</h2>
+
+<p>Lately, I&#8217;ve been doing some client work to pay the bills, which means I&#8217;m working with a group of other developers with a lot of tickets being handled all at once. To minimize my pain (and to keep nice and clean commit logs) I use my own version of the <a href='http://reinh.com/blog/2008/08/27/hack-and-and-ship.html'>SSP: Simplified Software Process</a>.</p>
+
+<ul>
+<li><code>git co master</code></li>
+
+<li><code>git pull</code></li>
+
+<li>Find a ticket to work on. Let&#8217;s say it&#8217;s &#8220;Add flanges to the WangleController&#8221;</li>
+
+<li><code>git co -b flanges_in_wangle</code></li>
+
+<li>Write a test, write some code, etc.</li>
+
+<li>Commit only what I know I want to commit. I use <code>git add -p</code> to be selective.</li>
+
+<li><code>git commit --amend</code> (I write really nice commit messages when there are other people looking at the code, and I use amend to bundle all my changes into one commit)</li>
+
+<li>Run the tests and make sure they pass</li>
+
+<li><code>git co master</code></li>
+
+<li><code>git pull</code></li>
+
+<li><code>git co flanges_in_wangle</code></li>
+
+<li><code>git rebase master</code></li>
+
+<li>At this point, either it goes well or I have merge conflicts. If I have conflicts, I fix them, and keep going. It&#8217;s better to have conflicts on a topic branch than in master.</li>
+
+<li>Run the tests again. If there are any code changes, commit, then repeat from checking out master again. The idea is to make sure that when you finally merge flanges_in_wangle into master, it&#8217;s going to be a clean fast-forward merge with no conflicts.</li>
+
+<li>Once I&#8217;m sure flanges_in_wangle is ready, <code>git co master</code></li>
+
+<li><code>git merge flanges_in_wangle</code></li>
+
+<li><code>git push</code></li>
+</ul>
+
+<h2 id='enlightenment'>Enlightenment</h2>
+
+<p>On my most recent large project that I started from scratch, I use something like the above, with one major exception: there is no <em>&#8216;master&#8217;</em>.</p>
+
+<p>Using <em>&#8216;origin&#8217;</em> as the name of your remote and <em>&#8216;master&#8217;</em> as the name of your main branch is just the default settings git gives you. Neither name is magic. So, I renamed <em>&#8216;origin&#8217;</em> to <em>&#8216;github&#8217;</em> in <code>.git/config</code> to be explicit about where the code is going. Then, I created a new branch <em>&#8216;development&#8217;</em> to reflect the code that is under the mainline of development.</p>
+
+<p>Then I deleted <em>&#8216;master&#8217;</em>.</p>
+
+<p>Yeah, you heard me. Who needs it?</p>
+
+<p>Once I was ready for stuff to go to staging, I made a <em>&#8216;staging&#8217;</em> branch, and likewise for <em>&#8216;production&#8217;</em>. Topic branches merge into <em>&#8216;development&#8217;</em>, which is merged periodically into <em>&#8216;staging&#8217;</em>, which gets promoted to <em>&#8216;production&#8217;</em> when it&#8217;s ready for deployment. There&#8217;s never any doubt about what code is on each environment; just look in the git repo.</p>
+
+<p>The downside to this is that when you first clone the repo, it&#8217;s broken, because git tries to checkout <em>&#8216;master&#8217;</em> and it doesn&#8217;t exist. Not a big deal, just setup the right branches and all is well.</p>
+
+<h2 id='and_you'>And you?</h2>
+
+<p>So what&#8217;s your git workflow? Share it in the comments, or blog about it <a href='http://skribit.com/suggestions/talk-about-your-daily-git-workflow' title='Skribit: Talk about your daily git workflow'>and tell us about it</a>.</p>
+
+<p><strong>PS</strong>: This blog post was written in direct response to a <a href='http://skribit.com'>Skribit</a> suggestion. I don&#8217;t promise I&#8217;ll blog about anything people ask me to, but it&#8217;s possible I will. If you&#8217;d like to get that kind of feedback on your blog, check Skribit out. They came out of the first Atlanta Startup Weekend, and are doing some very cool things.</p>
+  </div>
+</div>
+
+<div id="boastful">
+  <h2>Discussion</h2>
+  <div class="personal">
+    <a href="https://twitter.com/ivey"><img src="http://www.gravatar.com/avatar/a667482dce34922ec51f6b044d253d47?s=50" /></a>
+    <p>
+      <a href="https://twitter.com/ivey">Follow me on Twitter</a>. I don't have comments enabled, because I remember
+      when we didn't have blog comments, and we did just fine, thank you very much.
+    </p>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ivey">Tweet</a>
+    <a href="http://twitter.com/ivey" class="twitter-follow-button" data-show-count="false">Follow @ivey</a>
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  </div>
+</div>
+
+<div id="related">
+  <h2>Possibly Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>10 Sep 2011</span> &raquo; <a href="/2011/09/10/kittens.html">Kittens</a></li>
+    
+      <li><span>31 Jan 2010</span> &raquo; <a href="/2010/01/31/how-i-use-foursquare.html">How I use Foursquare</a></li>
+    
+      <li><span>13 Dec 2009</span> &raquo; <a href="/2009/12/13/retweet-replies.html">My Proposed Solution to the "Can't Comment On RTs" Problem: Retweet-Replies</a></li>
+    
+  </ul>
+</div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+    Copyright &copy; 1998-2011 Michael D. Ivey unless otherwise stated.
+    Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons License</a>.
+  </div>
+
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7169476-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
+</body>
+</html>

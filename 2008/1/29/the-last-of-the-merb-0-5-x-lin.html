@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Blog Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (43)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (6)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post blog">
+        <h1><a href="/2008/1/29/the-last-of-the-merb-0-5-x-lin">The last of the Merb 0.5.x line</a></h1>
+        <p>Just a few minutes ago I tagged and released Merb 0.5.3 “Inexperienced With Girls”, and it should be on the gem servers soon.  This is (hopefully) the last of the 0.5.x releases of Merb.  It’s the last unless something horrible is wrong with it.</p>
+
+
+  <p>Starting …. <strong>now</strong> .... we’re really focusing on the 0.9 code, which has some significant changes in terms of process.  First and foremost, we’re using <a href='http://git.or.cz/'>git</a> to manage the development, instead of Subversion.  Also, we’re splitting the codebase up into merb-core and merb-more, to balance that delicate line of “super small and focused yet feature-rich”.</p>
+
+
+  <p>If you’d like to see where things are headed, here’s the repos on GitHub:</p>
+
+
+  <ul>
+  <li><a href='http://github.com/wycats/merb-core/tree/master'>merb-core</a></li>
+    <li><a href='http://github.com/wycats/merb-more/tree/master'>merb-more</a></li>
+    <li>my <a href='http://github.com/ivey/merb-core/tree/master'>experimental merb-core</a></li>
+  </ul>
+
+
+  <p>One of the super cool things about GitHub is that it makes hosting a fork of a project trivial.  One of the super cool things about git is that it makes cherry-picking changesets from one tree to another really easy.  Combine those two things, and you get a <strong>completely</strong> different development style than with central-repo projects.</p>
+
+
+  <p>Right now, my experimental merb-core is the same as upstream, but I’ll be doing stuff in there that may or may not be ready for official merb.  I’ll let you know if there’s anything interesting in there.</p>
+
+
+  <p>The release of 0.9 is planned for February 8th, <span class='caps'>IIRC</span>.  There’s a lot to do, but we’ve made a lot of progress.  My next task is to make sure the <a href='http://pastie.caboo.se/144566'>preliminary 0.9 upgrade checklist</a> that wycats made is all that’s needed (it can’t be <strong>that easy</strong>, can it?) and then go through merb-core and make sure all the <span class='caps'>HTTP</span> compliance and support is good.</p>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

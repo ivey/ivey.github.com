@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+      <li><a href="/pages">Pages</a></li>
+      <li><a href="/files">Files</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (50)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (3)</li>
+      <li><a href="/2007/11/">November 2007</a> (2)</li>
+      <li><a href="/2007/7/">July 2007</a> (2)</li>
+      <li><a href="/2007/6/">June 2007</a> (2)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post about">
+        <p>
+          When I started blogging, it had everything: links, short posts, long posts, pictures.
+          Web 2.0 has brought new ways of creating that content, but it feels scattered.  This site
+          brings my multiple streams of content back to one place, like we did in the good old days.
+        </p>
+      </div>
+
+      <h2>Thursday, February 28, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/28/thinking-about-getting-tivo-use-me-as-a-referral-">Thinking about getting TiVo?  Use me as a referral.</a></h1>
+        <p>TiVo has a rewards program, which they’re phasing out.  The last day to earn any referral points is April 30.  So, if you’re thinking about getting TiVo sometime soon, please get it before April 30, and please use my email address for the referral.</p>
+
+
+  <p>Why should you do this?</p>
+
+
+  <p>Because, for every referral I get 5000 points.  For 500 points, I can order 5 (<strong>yes 5!</strong>) 3” TiVo plush things.</p>
+
+
+  <p><img src='http://gweezlebur.com/assets/2008/2/28/4.3.18.ORNAMENT_1.JPG' alt=''/></p>
+
+
+  <p>This means that if you use me as a referral, and I get 5000 points, and I then order 3” TiVo plush things, I can get 50 of them.  <strong>50</strong> 3” TiVo plush things if you buy TiVo!  How cool is that?</p>
+
+
+  <p>I’ll even share.  If you want some of them, and use me as a referral, I’ll send you some.  Heck, I’ll send you some even if you don’t, if I end up with enough.</p>
+
+
+  <p>My goal is to have enough to fill the bathtub.  Or maybe Ellie’s crib.  Or the Jeep.</p>
+      </div>
+          <h2>Saturday, February 23, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/23/a-simple-re-tweet-script">A simple re-tweet script</a></h1>
+        <p>I want to be able to tweet as <a href='http://twitter.com/EllieIvey'>Ellie</a> from my phone, without logging in and out of the web interface.  So I made a simple re-tweet script that will let me send direct messages and have them get posted.</p>
+
+
+<pre><code>
+#!/usr/bin/env ruby
+
+require 'twitter'
+twitter = Twitter::Base.new('USERNAME', 'PASSWORD')
+
+retweeters = ["ivey"]
+
+twitter.direct_messages.each do |message|
+  if retweeters.include? message.sender_screen_name
+    twitter.update(message.text)
+  else
+    twitter.d('ivey',"#{message.sender_screen_name}: #{message.text}")
+  end
+  twitter.destroy_direct_message(message.id)
+end
+</code></pre>
+
+  <p>Be sure to change my username to yours (in both places).  Run the script via cron how ever often you like.</p>
+      </div>
+          <h2>Tuesday, February 19, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/19/michael-has-baby-gt-true">michael.has_baby? =&gt; true</a></h1>
+        <p>The title of this post (which is “michael.has_baby? =&gt; true” despite what the <span class='caps'>CSS</span> has done to it, and that I am too tired to fix) may be the only Ruby content around here for a little while.  I mean, how can you think about Merb or <span class='caps'>HTTP</span> headers or how much GitHub rocks when you’re looking at this adorable face?</p>
+
+
+  <p><img src='http://farm3.static.flickr.com/2085/2275002693_771018520f.jpg?v=0'/></p>
+
+
+  <p>This is Ellie.  Eleanor Airey Ivey, born Feb. 18, 2008.  Mom and baby are well, pictures headed to Flickr and to http://ellieivey.com</p>
+      </div>
+          <h2>Thursday, February 14, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/14/merb-0-9-0-developer-release-">Merb 0.9.0 (developer release)</a></h1>
+        <p>A few minutes ago I pushed the gems for Merb 0.9.0 “All you need, none you don’t” to merbivore.com.  Before you run off to “gem update” there’s some things you should know.</p>
+
+
+  <p>As <a href='http://yehudakatz.com/2008/01/14/merbnext/'>wycats explained earlier</a> we’ve chopped Merb up a little bit.  merb-core is small, fast and just the stuff you need to build a basic web application.  merb-more is a collection of things that make it cooler and more useful, like mailers and generators and template engines.  Together, merb-core and merb-more make up “merb”.  You’ll still be able to gem install merb and have it work, or you can cherrypick just the pieces you want for your application.</p>
+
+
+  <p>We’ve also got a decent collection of “official” plugins, including all the <span class='caps'>ORM</span> plugins, and some additional rspec and test/unit support.</p>
+
+
+  <p>Anytime you gut a codebase like we did with Merb after 0.5, there’s stuff that doesn’t shake out properly.  We had planned to release 0.9.0 last weekend during acts_as_conference, but there’s still some little stuff that needs shaking.</p>
+
+
+  <p>Normally, we’d just get people to use trunk and see what needed doing, and then call it a release.  This time, we don’t really have a good sense of exactly where the rough spots are between all the moving parts.</p>
+
+
+  <p>We need your help.</p>
+
+
+  <p>Here’s 0.9.0, and it’s a real release.  It’s official.  It’s just not on the Rubyforge gem repository yet.  We’re calling it a “developer release” and it’s like a release candidate, except we don’t think we’ll actually release it.  Once people use it, and we oil some of those squeaky spots, we’ll push an 0.9.1.  We may do a few of these developer releases before we decide we’re ready to push it to Rubyforge for general consumption.</p>
+
+
+  <p>These developer releases are here to make sure that Merb 1.0 is as good as it can be, so if you want to see an awesome Merb 1.0, please use these 0.9.0 gems, and future dev releases, and give us feedback.</p>
+
+
+  <p>If you have RubyGems 1.0.1, and want to always use these developer releases whenever they’re available:</p>
+
+
+<pre><code>
+$ gem sources -a http://merbivore.com
+$ gem install merb
+</code></pre>
+
+  <p>If you don’t, or you don’t:</p>
+
+
+<pre><code>
+$ gem install --source http://merbivore.com merb
+</code></pre>
+
+  <p>As always, <a href='http://merb.lighthouseapp.com/'>put your bugs and patches in Lighthouse</a> and join the discussion on #merb.</p>
+
+
+  <p>PS: Want to see something cool?</p>
+
+
+<pre><code>
+$ merb-gen myflatapp --flat
+$ merb-gen mysinglefileapp --very-flat
+</code></pre>
+      </div>
+          <h2>Saturday, February 09, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/9/contributing-to-merb-part-2-">Contributing to Merb (Part 2)</a></h1>
+        <p><a href='http://gweezlebur.com/2008/2/1/so-you-want-to-contribute-to-merb-core-part-1'>In Part 1</a> I talked about how to use git to work on the merb-core/merb-more projects that will be Merb 0.9.</p>
+
+
+  <p>This time I’ll show you a different workflow, for people who plan to make a lot of changes, or want to do something interesting and maintain it as a public fork.</p>
+
+
+  <p>Forking is sometimes a bad word, but no more!  In this new gitastic world, forking is a cool thing.  That’s why Github makes it so easy to do!  When you fork, you do the same thing as when you clone….you just make your clone accessible to the world.</p>
+
+
+  <h3>Step 1: Fork</h3>
+
+
+  <p>Every Github project has a prominent “Fork” button, if you’re logged in.</p>
+
+
+  <p><img src='http://gweezlebur.com/assets/2008/2/7/fork.jpg' alt=''/></p>
+
+
+  <p>So the first step is to click that button.  As simple as that, you’ve made your own repository based on the original.  You can add other people to it, accept patches, whatever you like.  (In fact, I really hope someone will fork merb-core and merb-more, declare themselves to be the coordinator of documentation patches, and periodically feed those back to the main repos)</p>
+
+
+  <p>Play around with the settings.  You can’t break it, and if you do, you can delete it and start over.  Forks are cheap.</p>
+
+
+  <h3>Step 2: Clone your new repo</h3>
+
+
+  <p>Instead of cloning wycats’ repo, you want to clone your own.  For instance, I have my own merb-core for experimental stuff, or if I want to give someone commit for a while to work on something together.  When I clone my repo, I use the following:</p>
+
+
+<pre><code>
+$ mv merb-core merb-core-official
+$ git clone git@github.com:ivey/merb-core.git
+</code></pre>
+
+  <p>(This is not completely true.  I have a much more complicated setup, which I may detail in Part 3)</p>
+
+
+  <p>Now, you probably want a way to keep in sync with the official repo.  So let’s add it, too:</p>
+
+
+<pre><code>
+$ git remote add official git://github.com/wycats/merb-core.git
+</code></pre>
+
+  <p>Now, anytime you want to sync up, you can use either of the following:</p>
+
+
+<pre><code>
+$ git pull official master
+$ # or
+$ git fetch official
+$ git rebase official/master
+</code></pre>
+
+  <p>The first version does an automatic commit of the merge, the second doesn’t.</p>
+
+
+  <h3>Step 3: Fix stuff</h3>
+
+
+  <p>This is where it gets fun.  This is your repo.  Make some changes.  Use ‘git push’ to push them up to your github repo.  Share them with #merb.  Get people to run your version and try the changes out.  Fix bugs.</p>
+
+
+  <p>If you’re hoping to get your changes merged back in, it’s a good idea to communicate with us about what you’re doing.</p>
+
+
+  <p>If you’re working on multiple big projects, it’s a <strong>really</strong> good idea to keep each one in a separate remote branch, so we can merge one without merging all of them.  We can cherry-pick if needed, but it’s easier if you use branches.</p>
+
+
+<pre><code>
+$ git checkout -b feature1      # create a branch
+# make changes
+$ git commit
+$ git push origin feature1      # push feature1 to remote
+</code></pre>
+
+  <p>Or, you can <tt>git push —tags </tt> and push <strong>all</strong> of your local tags to your remote repo.  Hey, it’s your repo, use it how you like.</p>
+
+
+  <h3>Step 4: Getting changes merged</h3>
+
+
+  <p>Now you need to get someone to merge your changes.  Ideally, you’ll already have an open ticket in Lighthouse, have been in communication with folks in #merb, and maybe even have talked to one of the core devs about your changes.</p>
+
+
+Update your ticket and add:
+<pre>
+   Hey, I have this fixed in my repo.
+
+   Please pull:
+
+   git pull git://github.com/jimmyhoffa/merb-core.git feature1
+</pre>
+
+  <p>The important things to note are that you use <strong>your</strong> repo <span class='caps'>URL</span>, you make it easy to copy/paste directly (starting it with ‘git pull’) and that you include the remote branch, <strong>even if it is master</strong>.</p>
+
+
+  <p>(Github will soon be adding a “Pull Request” button, so you can notify about patches via Github.  Keep an eye out for that.)</p>
+
+
+  <p>If your changes are accepted, you’ll see your commits show up in the main repo and there will be much adulation.  Hooray!  This doesn’t even begin to scratch the surface of how awesome git is, but it should get you going.  Oh, and if you’re like me, you’re dying to <a href='http://pastie.caboo.se/private/woiyw5qny3mpl2zlwoya'>know how git works on the inside</a></p>
+      </div>
+          <h2>Monday, February 04, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/4/merb-monday">Merb Monday</a></h1>
+        <p><a href='http://jit.nuance9.com/'>jp_n9</a> from #merb has started a series he calls <a href='http://jit.nuance9.com/2008/02/merb-faqs-environment-variables.html'>Merb Monday</a> where he compiles questions and answers from the <span class='caps'>IRC</span> channel.  This is an awesome idea.  I was thinking last night that we needed a “Kernel Traffic” style summary for Merb stuff, and this is an excellent start!  Go subscribe, or just check it out on Mondays.</p>
+      </div>
+          <h2>Friday, February 01, 2008</h2>
+            <div class="post blog">
+        <h1><a href="/2008/2/1/contributing-to-merb-part-1-">Contributing to Merb (Part 1)</a></h1>
+        <p>I’ve seen several people ask “How can I help with merb-core?” and so, here’s a little guide. (Updated 2/14 w/ notes on rebasing.  Thanks ReinH.)</p>
+
+
+  <p>This is part 1 of 2, for people who don’t want to run their own public fork.</p>
+
+
+  <h3>Step 1: Get a Lighthouse account</h3>
+
+
+  <p>All of the Merb development is moving to Lighthouse instead of Trac, so you’re going to need an account.  <a href='http://merb.lighthouseapp.com/users/new'>Go register</a> and then come back here.</p>
+
+
+  <h3>Step 2: Get git</h3>
+
+
+  <p>Merb is using <a href='http://git.or.cz/'>git</a> for development now.  <a href='http://git.or.cz/#download'>There’s information on the main git site</a> about downloading and installing.  There’s also some guides for installing on Mac.  Google is your friend.</p>
+
+
+  <p>You should also configure git with your email address:</p>
+
+
+<pre><code>
+git config --global user.name "Mike Tester" 
+git config --global user.email "mtester@gweezlebur.com" 
+</code></pre>
+
+  <p>These are global config settings that will apply to every project you checkout.</p>
+
+
+  <h3>Step 3: Get Merb</h3>
+
+
+  <p>Using git is different from using <span class='caps'>SVN</span>.  Every repository, whether published or not, is on equal footing with every other one.  All of the official Merb releases will be coming out of <a href='http://github.com/wycats/merb-core/tree/master'>wycats’ repository</a>, though, so you probably want to get that one.  Do that with “git clone”</p>
+
+
+<pre><code>
+$ git clone git://github.com/wycats/merb-core.git
+Initialized empty Git repository in /tmp/merb-core/.git/
+remote: Generating pack...
+remote: Done counting 1684 objects.
+remote: Deltifying 1684 objects...
+remote:  100% (1684/1684) done
+Indexing 1684 objects...
+remote: Total 1684 (delta 800), reused 57 (delta 8)
+ 100% (1684/1684) done
+Resolving 800 deltas...
+ 100% (800/800) done
+</code></pre>
+
+  <p>This will create a new repository in the directory merb-core, set up the remote repository links, fetch the latest copy of the upstream repository into your repository. and set up a tracking branch for upstream.</p>
+
+
+  <h3>Step 4: Fix something</h3>
+
+
+  <p>This is the whole point, right?  There’s a bug you’re dying to fix, or a feature you’re dying to add.  So let’s do that.  First, we create what git users calls a “topic branch” to hold the changes for this particular bug</p>
+
+
+<pre><code>
+$ git checkout -b my_bugfix 
+Switched to a new branch "my_bugfix" 
+</code></pre>
+
+  <p>This creates the branch, and switches us to it.  Now change whatever needs changing, of course running the specs to make sure they still pass.</p>
+
+
+  <p>There’s a lot of git commands you may use here that are beyond the scope of this guide, like diff and status.  Consult your favorite git tutorial.</p>
+
+
+  <p>Now we need to commit the changes.  Remember, in git every repository is equal, so you’re committing to your local repo, not trying to commit to wycats’.</p>
+
+
+<pre><code>
+$ git commit -a -v
+</code></pre>
+
+  <p>This will pop open an editor for us to type a commit message.  It should have a short, very descriptive first line, a blank line, then any other information that’s relevant.</p>
+
+
+<blockquote><pre>
+Added bug zapper library
+
+This loads in the bugzapper library,
+which removes some common bugs,
+like the ones in ticket #343.
+</pre></blockquote>
+
+  <p>Save and quit, and you’ll see something like this:</p>
+
+
+<pre><code>
+Created commit 14626c1: Added bug zapper library
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+</code></pre>
+
+  <p>The important bit is “14626c1” ... it’s the first part of the unique identifier for this commit.  If you ever need to refer to this exact commit, you’ll need that.</p>
+
+
+  <p>However, since we used a topic branch, we know that every commit on this branch is part of the intended changes.  So we can use a shorthand to actually generate our patch(es).  First, though, let’s make sure we’re current with upstream</p>
+
+
+<pre><code>
+$ git checkout master
+$ git pull
+$ git checkout my_bugfix
+$ git rebase master
+$ git format-patch master..
+0001-Added-bug-zapper-library.patch
+0002-initialize-zapper.patch
+</code></pre>
+
+  <p>This says “make patch files for every commit that is in this branch and not in master” (master is the default branch you started with).  You can see that I committed another fix, so there are 2 patches.</p>
+
+
+  <p>If the rebase fails, it means your patches don’t apply cleanly with the latest upstream changes.  You’ll have to fix that (either manually or using git merge-tool), and then</p>
+
+
+<pre><code>
+$ git rebase --continue
+</code></pre>
+
+  <p>After that, continue with formatting the patch.</p>
+
+
+  <h3>Step 5: Submit the patche(es)</h3>
+
+
+  <p>Go to Lighthouse.  Create a ticket.  Tag it with “patch”.  Attach your patch(es).  Wait for them to be applied.</p>
+
+
+  <h3>Step 6: Cleanup</h3>
+
+
+  <p>You should switch back to the master branch now.</p>
+
+
+<pre><code>
+$ git checkout master
+Switched to branch "master" 
+</code></pre>
+
+  <p>If your patches have been accepted, you can delete your branch, too:</p>
+
+
+<pre><code>
+$ git branch -D my_bugfix
+Deleted branch my_bugfix.
+</code></pre>
+
+  <p>Branches are cheap, so you can leave it around for a while, if you think you might come back to it.</p>
+
+
+  <p>You should also pull down the latest changes, so your next patch will apply cleanly:</p>
+
+
+<pre><code>
+$ git pull
+</code></pre>
+      </div>
+    
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

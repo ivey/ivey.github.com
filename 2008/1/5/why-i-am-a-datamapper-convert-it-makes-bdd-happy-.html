@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Blog Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (43)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (6)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post blog">
+        <h1><a href="/2008/1/5/why-i-am-a-datamapper-convert-it-makes-bdd-happy-">Why I am a DataMapper convert (it makes BDD happy)</a></h1>
+        <p><span class='dropcap'>T</span> here’s lots of buzz around <a href='http://datamapper.org/'>DataMapper</a> right now, especially among the #merb crowd.  I haven’t had any major issues with ActiveRecord, so I haven’t needed to look at a new <span class='caps'>ORM</span>…but I like to play with new things, so last night I really gave the DM a try.</p>
+
+
+  <p>I’m a complete convert, if for no other reason that the awesome way automigrations play along with <span class='caps'>BDD</span>.</p>
+
+
+  <p>First, tell your spec_helper to use automigrations:</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='co'>DataMapper</span>::<span class='co'>Base</span>.auto_migrate!
+</pre></div>
+</div>
+
+
+  <p>This <strong>will cause your database tables to be dropped and re-created</strong> so use with caution.</p>
+
+
+  <p>Next, let’s spec some behavior:</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+it <span class='s'><span class='dl'>"</span><span class='k'>should have a username field</span><span class='dl'>"</span></span> <span class='r'>do</span>
+  <span class='iv'>@person</span>.username = <span class='s'><span class='dl'>"</span><span class='k'>jjames</span><span class='dl'>"</span></span>
+  <span class='iv'>@person</span>.username.should == <span class='s'><span class='dl'>"</span><span class='k'>jjames</span><span class='dl'>"</span></span>
+<span class='r'>end</span>
+</pre></div>
+</div>
+
+
+  <p>And see what autotest says:</p>
+
+
+<pre><code>
+....F.....
+
+1)
+NoMethodError in 'Person should have a username field'
+undefined method `username=' for #&lt;person:0x13f720c&gt;
+./spec/models/person_spec.rb:38:
+
+Finished in 0.049775 seconds
+
+10 examples, 1 failure
+</code></pre>
+
+  <p>Cool, that’s what we expected.  Now, with ActiveRecord, to get to green, we’d need to create a migration and run it.  With DataMapper, we stay in our model:</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='r'>class</span> <span class='cl'>Person</span> &lt; <span class='co'>DataMapper</span>::<span class='co'>Base</span>
+  property <span class='sy'>:username</span>, <span class='sy'>:string</span>
+<span class='r'>end</span>
+</pre></div>
+</div>
+
+
+  <p>And autotest says…</p>
+
+
+<pre><code>
+..........
+
+Finished in 0.040584 seconds
+
+10 examples, 0 failures
+</code></pre>
+
+  <p>Now, is this perfect?  Not yet.  DM has a good amount of work still.  There’s some smart folks working on it, and I bet it will be pretty sweet in a few more weeks.</p>
+
+
+  <p>But, man…that’s just awesome.</p>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

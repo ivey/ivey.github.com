@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Blog Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (43)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (6)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post blog">
+        <h1><a href="/2008/3/1/quickie-sake-tasks-for-merb-h">Quickie: sake tasks for Merb hackers</a></h1>
+        <p>If you hack around on Merb itself, take a look at these <a href='http://errtheblog.com/posts/60-sake-bomb'>sake</a> tasks</p>
+
+
+<pre><code>
+$ sake -T http://merbivore.com/merb-dev.sake
+sake merb:clone          # Clone a copy of all 3 of the Merb repositories
+sake merb:update         # Update your local Merb repositories.  Run from
+ inside the top-level merb directory.
+sake merb:gems:wipe      # Uninstall all RubyGems related to Merb
+sake merb:gems:refresh   # Pull fresh copies of Merb and refresh all the
+ gems
+sake merb:install:core   # Install merb-core
+sake merb:install:more   # Install merb-more
+sake merb:install        # Install merb-core and merb-more
+sake merb:sake:refresh   # Remove and reinstall Merb sake recipes
+</code></pre>
+
+  <p>The code is served piping hot direct from <a href='http://github.com/ivey/merb-dev/'>GitHub</a> so it’s always current.  If you’d like to contribute, let me know and I’ll add you.</p>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

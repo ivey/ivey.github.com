@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+      <li><a href="/pages">Pages</a></li>
+      <li><a href="/files">Files</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (50)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (3)</li>
+      <li><a href="/2007/11/">November 2007</a> (2)</li>
+      <li><a href="/2007/7/">July 2007</a> (2)</li>
+      <li><a href="/2007/6/">June 2007</a> (2)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post blog">
+        <h1><a href="/2008/2/14/merb-0-9-0-developer-release-">Merb 0.9.0 (developer release)</a></h1>
+        <p>A few minutes ago I pushed the gems for Merb 0.9.0 “All you need, none you don’t” to merbivore.com.  Before you run off to “gem update” there’s some things you should know.</p>
+
+
+  <p>As <a href='http://yehudakatz.com/2008/01/14/merbnext/'>wycats explained earlier</a> we’ve chopped Merb up a little bit.  merb-core is small, fast and just the stuff you need to build a basic web application.  merb-more is a collection of things that make it cooler and more useful, like mailers and generators and template engines.  Together, merb-core and merb-more make up “merb”.  You’ll still be able to gem install merb and have it work, or you can cherrypick just the pieces you want for your application.</p>
+
+
+  <p>We’ve also got a decent collection of “official” plugins, including all the <span class='caps'>ORM</span> plugins, and some additional rspec and test/unit support.</p>
+
+
+  <p>Anytime you gut a codebase like we did with Merb after 0.5, there’s stuff that doesn’t shake out properly.  We had planned to release 0.9.0 last weekend during acts_as_conference, but there’s still some little stuff that needs shaking.</p>
+
+
+  <p>Normally, we’d just get people to use trunk and see what needed doing, and then call it a release.  This time, we don’t really have a good sense of exactly where the rough spots are between all the moving parts.</p>
+
+
+  <p>We need your help.</p>
+
+
+  <p>Here’s 0.9.0, and it’s a real release.  It’s official.  It’s just not on the Rubyforge gem repository yet.  We’re calling it a “developer release” and it’s like a release candidate, except we don’t think we’ll actually release it.  Once people use it, and we oil some of those squeaky spots, we’ll push an 0.9.1.  We may do a few of these developer releases before we decide we’re ready to push it to Rubyforge for general consumption.</p>
+
+
+  <p>These developer releases are here to make sure that Merb 1.0 is as good as it can be, so if you want to see an awesome Merb 1.0, please use these 0.9.0 gems, and future dev releases, and give us feedback.</p>
+
+
+  <p>If you have RubyGems 1.0.1, and want to always use these developer releases whenever they’re available:</p>
+
+
+<pre><code>
+$ gem sources -a http://merbivore.com
+$ gem install merb
+</code></pre>
+
+  <p>If you don’t, or you don’t:</p>
+
+
+<pre><code>
+$ gem install --source http://merbivore.com merb
+</code></pre>
+
+  <p>As always, <a href='http://merb.lighthouseapp.com/'>put your bugs and patches in Lighthouse</a> and join the discussion on #merb.</p>
+
+
+  <p>PS: Want to see something cool?</p>
+
+
+<pre><code>
+$ merb-gen myflatapp --flat
+$ merb-gen mysinglefileapp --very-flat
+</code></pre>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

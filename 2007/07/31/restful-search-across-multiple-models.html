@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>RESTful search across multiple models</title>
+   <meta name="author" content="Michael D. Ivey" />
+
+   <!-- Feeds -->
+   <link rel="alternate" type="application/rss+xml" title="Atom" href="http://feeds2.feedburner.com/gweezlebur" />
+   <link rel="alternate" type="application/rss+xml" title="Comments" href="http://gweezlebur.disqus.com/comments.rss" />
+   <link rel="alternate" type="application/rss+xml" title="Everything" href="http://everything.gweezlebur.com/rss" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/boastful.css" type="text/css" />
+
+   <!-- OpenID -->
+   <link rel="openid.server"
+         href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate"
+         href="http://ivey.myopenid.com/" />
+   <link rel="openid2.local_id"
+         href="http://ivey.myopenid.com" />
+   <link rel="openid2.provider"
+         href="http://www.myopenid.com/server" />
+   <meta http-equiv="X-XRDS-Location"
+         content="http://www.myopenid.com/xrds?username=ivey.myopenid.com" />
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/jquery.boastful.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('#boastful').boastful();
+     });
+   </script>
+   
+</head>
+<body>
+<div id="container">
+  <div id="header">
+  <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+  <h2>Michael Ivey, blogging since '99</h2>
+  </div>
+  
+  <ul id="feeds">
+    <li><a href="/">Home</a></li>
+    <li><a href="http://everything.gweezlebur.com">Everything</a></li>
+    <li><a href="/contact">Contact</a></li>
+<!--    <li><a href="/pages">Pages</a></li>
+    <li><a href="/files">Files</a></li> /-->
+    <li><a href="/archive.html">Archive</a></li>
+  </ul>
+
+  <div id="content">
+    <div class="hentry" id="article-/2007/07/31/restful-search-across-multiple-models">
+  <h2>
+    <abbr class="published" title="2007-07-31T00:00:00+00:00">Tuesday, July 31, 2007</abbr>
+  </h2>
+  <div class="post blog">
+  <h1 class="entry-title"><a href="/2007/07/31/restful-search-across-multiple-models.html">RESTful search across multiple models</a></h1>
+  <div class="entry-content">
+    <p>A guy I know from the Rails mailing list called me this morning.  He&#8217;s working on some kind of forum application, I think, and is thinking hard about how to do search in a RESTful way.</p>
+<p>Normally, I just use the index action to search across a single resource, but in his case he wants to search Posts, which are nested inside Topics, which are nested inside Forums.</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>He wants to search Posts across all Forums and Topics.  One option would be to make PostsController serve double-duty</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>and make it figure out whether or not it&#8217;s called in a scoped way or an unscoped way.</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>In this case, I suggested he go a different way.  Even though he says he only wants to search Posts, I feel pretty sure he wants to search Topics (by title) and Forums (by name), too.</p>
+<p>And even if he doesn&#8217;t, I do.  I&#8217;m about to add a general-purpose, cross-resource search to <span class="caps">SOLIS</span>, the registration and conference management system I&#8217;m writing for <a href="http://www.suusi.org"><span class="caps">SUUSI</span></a> and this seemed like an ideal way to help out a friend, make a much-needed blog post, and get some code done in the meantime.</p>
+<p>Before we get started, though&#8230;this is <strong>one way</strong> to do RESTful search.  It&#8217;s not the only way.  It is probably not the best way.  I&#8217;m not sure it&#8217;s a good way, since I just thought of it on the porch this morning and haven&#8217;t used it yet.  I&#8217;m pretty sure it&#8217;s an OK way, though, and a good place to start thinking about it. <span class="caps">YMMV</span>.</p>
+<p>OK, that&#8217;s out of the way.</p>
+<p>I already know what I want: a singleton resource called /search.  So let&#8217;s add it to the routes</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>I can never remember whether singleton resources want singular (SearchController) or plural (SearchesController) names.  I&#8217;m pretty sure this has changed in edge, and possibly changed back.  So, I add the resource and load it up, and see what Rails tells me.  When I load /search, I get &#8216;uninitialized constant SearchController&#8217;.  Cool, it did what I wanted, and used singular.  (I just checked, and on edge it uses plural.  Bleh.  I guess I can see why, but&#8230;anyway.)  Now we need that controller.</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>Because it&#8217;s a singleton resource, the actions are different; requesting /search calls the show action.</p>
+<p>Now, showing a search with no query string doesn&#8217;t make sense.  /search/new is an ugly <span class="caps">URL</span>.  I want to search as a <span class="caps">GET</span> not a <span class="caps">POST</span>, so you can bookmark it.  So, here&#8217;s what I ended up with.</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>Obviously you&#8217;ll format your search results more prettily, with links and such.  And you&#8217;ll need search() methods on all the classes you&#8217;re going to search.  Or, make a Searcher model and let it do all the work.</p>
+  </div>
+</div>
+
+<div id="boastful">
+  <h2>Discussion</h2>
+  <div class="personal">
+    <a href="https://twitter.com/ivey"><img src="http://www.gravatar.com/avatar/a667482dce34922ec51f6b044d253d47?s=50" /></a>
+    <p>
+      <a href="https://twitter.com/ivey">Follow me on Twitter</a>. I don't have comments enabled, because I remember
+      when we didn't have blog comments, and we did just fine, thank you very much.
+    </p>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ivey">Tweet</a>
+    <a href="http://twitter.com/ivey" class="twitter-follow-button" data-show-count="false">Follow @ivey</a>
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  </div>
+</div>
+
+<div id="related">
+  <h2>Possibly Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>10 Sep 2011</span> &raquo; <a href="/2011/09/10/kittens.html">Kittens</a></li>
+    
+      <li><span>31 Jan 2010</span> &raquo; <a href="/2010/01/31/how-i-use-foursquare.html">How I use Foursquare</a></li>
+    
+      <li><span>13 Dec 2009</span> &raquo; <a href="/2009/12/13/retweet-replies.html">My Proposed Solution to the "Can't Comment On RTs" Problem: Retweet-Replies</a></li>
+    
+  </ul>
+</div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+    Copyright &copy; 1998-2011 Michael D. Ivey unless otherwise stated.
+    Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons License</a>.
+  </div>
+
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7169476-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
+</body>
+</html>

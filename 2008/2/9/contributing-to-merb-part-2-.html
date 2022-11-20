@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+      <li><a href="/pages">Pages</a></li>
+      <li><a href="/files">Files</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (50)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (3)</li>
+      <li><a href="/2007/11/">November 2007</a> (2)</li>
+      <li><a href="/2007/7/">July 2007</a> (2)</li>
+      <li><a href="/2007/6/">June 2007</a> (2)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post blog">
+        <h1><a href="/2008/2/9/contributing-to-merb-part-2-">Contributing to Merb (Part 2)</a></h1>
+        <p><a href='http://gweezlebur.com/2008/2/1/so-you-want-to-contribute-to-merb-core-part-1'>In Part 1</a> I talked about how to use git to work on the merb-core/merb-more projects that will be Merb 0.9.</p>
+
+
+  <p>This time I’ll show you a different workflow, for people who plan to make a lot of changes, or want to do something interesting and maintain it as a public fork.</p>
+
+
+  <p>Forking is sometimes a bad word, but no more!  In this new gitastic world, forking is a cool thing.  That’s why Github makes it so easy to do!  When you fork, you do the same thing as when you clone….you just make your clone accessible to the world.</p>
+
+
+  <h3>Step 1: Fork</h3>
+
+
+  <p>Every Github project has a prominent “Fork” button, if you’re logged in.</p>
+
+
+  <p><img src='http://gweezlebur.com/assets/2008/2/7/fork.jpg' alt=''/></p>
+
+
+  <p>So the first step is to click that button.  As simple as that, you’ve made your own repository based on the original.  You can add other people to it, accept patches, whatever you like.  (In fact, I really hope someone will fork merb-core and merb-more, declare themselves to be the coordinator of documentation patches, and periodically feed those back to the main repos)</p>
+
+
+  <p>Play around with the settings.  You can’t break it, and if you do, you can delete it and start over.  Forks are cheap.</p>
+
+
+  <h3>Step 2: Clone your new repo</h3>
+
+
+  <p>Instead of cloning wycats’ repo, you want to clone your own.  For instance, I have my own merb-core for experimental stuff, or if I want to give someone commit for a while to work on something together.  When I clone my repo, I use the following:</p>
+
+
+<pre><code>
+$ mv merb-core merb-core-official
+$ git clone git@github.com:ivey/merb-core.git
+</code></pre>
+
+  <p>(This is not completely true.  I have a much more complicated setup, which I may detail in Part 3)</p>
+
+
+  <p>Now, you probably want a way to keep in sync with the official repo.  So let’s add it, too:</p>
+
+
+<pre><code>
+$ git remote add official git://github.com/wycats/merb-core.git
+</code></pre>
+
+  <p>Now, anytime you want to sync up, you can use either of the following:</p>
+
+
+<pre><code>
+$ git pull official master
+$ # or
+$ git fetch official
+$ git rebase official/master
+</code></pre>
+
+  <p>The first version does an automatic commit of the merge, the second doesn’t.</p>
+
+
+  <h3>Step 3: Fix stuff</h3>
+
+
+  <p>This is where it gets fun.  This is your repo.  Make some changes.  Use ‘git push’ to push them up to your github repo.  Share them with #merb.  Get people to run your version and try the changes out.  Fix bugs.</p>
+
+
+  <p>If you’re hoping to get your changes merged back in, it’s a good idea to communicate with us about what you’re doing.</p>
+
+
+  <p>If you’re working on multiple big projects, it’s a <strong>really</strong> good idea to keep each one in a separate remote branch, so we can merge one without merging all of them.  We can cherry-pick if needed, but it’s easier if you use branches.</p>
+
+
+<pre><code>
+$ git checkout -b feature1      # create a branch
+# make changes
+$ git commit
+$ git push origin feature1      # push feature1 to remote
+</code></pre>
+
+  <p>Or, you can <tt>git push —tags </tt> and push <strong>all</strong> of your local tags to your remote repo.  Hey, it’s your repo, use it how you like.</p>
+
+
+  <h3>Step 4: Getting changes merged</h3>
+
+
+  <p>Now you need to get someone to merge your changes.  Ideally, you’ll already have an open ticket in Lighthouse, have been in communication with folks in #merb, and maybe even have talked to one of the core devs about your changes.</p>
+
+
+Update your ticket and add:
+<pre>
+   Hey, I have this fixed in my repo.
+
+   Please pull:
+
+   git pull git://github.com/jimmyhoffa/merb-core.git feature1
+</pre>
+
+  <p>The important things to note are that you use <strong>your</strong> repo <span class='caps'>URL</span>, you make it easy to copy/paste directly (starting it with ‘git pull’) and that you include the remote branch, <strong>even if it is master</strong>.</p>
+
+
+  <p>(Github will soon be adding a “Pull Request” button, so you can notify about patches via Github.  Keep an eye out for that.)</p>
+
+
+  <p>If your changes are accepted, you’ll see your commits show up in the main repo and there will be much adulation.  Hooray!  This doesn’t even begin to scratch the surface of how awesome git is, but it should get you going.  Oh, and if you’re like me, you’re dying to <a href='http://pastie.caboo.se/private/woiyw5qny3mpl2zlwoya'>know how git works on the inside</a></p>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

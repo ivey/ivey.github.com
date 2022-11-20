@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>gweezlebur</title>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Flickr" href="http://api.flickr.com/services/feeds/photos_public.gne?id=90358277@N00&tags=forblog&lang=en-us&format=rss_200" />
+    <link rel="alternate" type="application/rss+xml" title="Twitter" href="http://twitter.com/statuses/user_timeline/10967.rss" />
+    <link rel="alternate" type="application/rss+xml" title="del.icio.us" href="http://del.icio.us/rss/ivey" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="http://gweezlebur.com/feed/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Reader" href="http://www.google.com/reader/public/atom/user/13346909044841845374/state/com.google/broadcast" />
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.kevinmarsh.com/favicon.ico" />
+    <link rel="openid.server" href="https://pip.verisignlabs.com/server" />
+    <link rel="openid.delegate" href="http://ivey.pip.verisignlabs.com/" />
+    <meta name="keywords" content="michael ivey, michael d. ivey, gweezlebur, blog, weblog, bay minette, ruby, merb, rails, ruby on rails, kg4qdh" />
+    <meta name="description" content="Homepage of Michael D. Ivey, long time web hacker from Bay Minette, Alabama" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+      <h2>Michael Ivey, blogging since '99</h2>
+    </div>
+    <ul id="feeds">
+      <li class="feed blog"><a href="http://gweezlebur.com">Blog</a></li>
+      <li class="feed twitter"><a href="http://twitter/ivey">Twitter</a></li>
+      <li class="feed flickr"><a href="http://flickr.com/photos/ivey">Flickr</a></li>
+      <li class="feed delicious"><a href="http://del.icio.us/ivey">del.icio.us</a></li>
+      <li class="feed reader"><a href="http://www.google.com/reader/shared/13346909044841845374">Reader</a></li>
+      <li><a href="/pages">Pages</a></li>
+      <li><a href="/files">Files</a></li>
+    </ul>
+    <div id="archives">
+      <h2>Archives</h2>
+      <ul>
+      <li><a href="/2008/6/">June 2008</a> (50)</li>
+      <li><a href="/2008/5/">May 2008</a> (30)</li>
+      <li><a href="/2008/4/">April 2008</a> (1)</li>
+      <li><a href="/2008/3/">March 2008</a> (1)</li>
+      <li><a href="/2008/2/">February 2008</a> (7)</li>
+      <li><a href="/2008/1/">January 2008</a> (3)</li>
+      <li><a href="/2007/11/">November 2007</a> (2)</li>
+      <li><a href="/2007/7/">July 2007</a> (2)</li>
+      <li><a href="/2007/6/">June 2007</a> (2)</li>
+      </ul>
+      <p>Older posts coming eventually.</p>
+    </div>
+    <div id="content">
+            <div class="post about">
+        <p>
+          When I started blogging, it had everything: links, short posts, long posts, pictures.
+          Web 2.0 has brought new ways of creating that content, but it feels scattered.  This site
+          brings my multiple streams of content back to one place, like we did in the good old days.
+        </p>
+      </div>
+
+      <h2>Tuesday, July 31, 2007</h2>
+            <div class="post blog">
+        <h1><a href="/2007/7/31/restful-search-across-multiple-models">RESTful search across multiple models</a></h1>
+        <p><span class='dropcap'>A</span> guy I know from the Rails mailing list called me this morning.  He’s working on some kind of forum application, I think, and is thinking hard about how to do search in a RESTful way.</p>
+
+
+  <p>Normally, I just use the index action to search across a single resource, but in his case he wants to search Posts, which are nested inside Topics, which are nested inside Forums.</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='c'># routes.rb</span>
+
+map.resources <span class='sy'>:forums</span> <span class='r'>do</span> |forum|
+  forum.resources <span class='sy'>:topics</span> <span class='r'>do</span> |topic|
+    topic.resources <span class='sy'>:posts</span>
+  <span class='r'>end</span>
+<span class='r'>end</span>
+</pre></div>
+</div>
+
+
+  <p>He wants to search Posts across all Forums and Topics.  One option would be to make PostsController serve double-duty</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='c'># routes.rb</span>
+
+map.resources <span class='sy'>:forums</span> <span class='r'>do</span> |forum|
+  forum.resources <span class='sy'>:topics</span> <span class='r'>do</span> |topic|
+    topic.resources <span class='sy'>:posts</span>
+  <span class='r'>end</span>
+<span class='r'>end</span>
+
+map.resources <span class='sy'>:posts</span>
+</pre></div>
+</div>
+
+
+  <p>and make it figure out whether or not it’s called in a scoped way or an unscoped way.</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='c'># posts_controller</span>
+
+<span class='r'>def</span> <span class='fu'>index</span>
+  <span class='r'>if</span> params.include?(<span class='sy'>:forum_id</span>)
+    <span class='c'># act normal, we're scoped</span>
+  <span class='r'>else</span>
+    <span class='c'># we're special and top-level, so ... do something different</span>
+  <span class='r'>end</span>
+<span class='r'>end</span>
+</pre></div>
+</div>
+
+
+  <p>In this case, I suggested he go a different way.  Even though he says he only wants to search Posts, I feel pretty sure he wants to search Topics (by title) and Forums (by name), too.</p>
+
+
+  <p>And even if he doesn’t, I do.  I’m about to add a general-purpose, cross-resource search to <span class='caps'>SOLIS</span>, the registration and conference management system I’m writing for <a href='http://www.suusi.org/'><span class='caps'>SUUSI</span></a> and this seemed like an ideal way to help out a friend, make a much-needed blog post, and get some code done in the meantime.</p>
+
+
+  <p>Before we get started, though…this is <strong>one way</strong> to do RESTful search.  It’s not the only way.  It is probably not the best way.  I’m not sure it’s a good way, since I just thought of it on the porch this morning and haven’t used it yet.  I’m pretty sure it’s an OK way, though, and a good place to start thinking about it. <span class='caps'>YMMV</span>.</p>
+
+
+  <p>OK, that’s out of the way.</p>
+
+
+  <p>I already know what I want: a singleton resource called /search.  So let’s add it to the routes</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+map.resource <span class='sy'>:search</span>
+</pre></div>
+</div>
+
+
+  <p>I can never remember whether singleton resources want singular (SearchController) or plural (SearchesController) names.  I’m pretty sure this has changed in edge, and possibly changed back.  So, I add the resource and load it up, and see what Rails tells me.  When I load /search, I get ‘uninitialized constant SearchController’.  Cool, it did what I wanted, and used singular.  (I just checked, and on edge it uses plural.  Bleh.  I guess I can see why, but…anyway.)  Now we need that controller.</p>
+
+
+<pre><code>
+$ script/generate controller -c Search
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/search
+A         app/views/search
+      exists  test/functional/
+      create  app/controllers/search_controller.rb
+A         app/controllers/search_controller.rb
+      create  test/functional/search_controller_test.rb
+A         test/functional/search_controller_test.rb
+      create  app/helpers/search_helper.rb
+A         app/helpers/search_helper.rb
+</code></pre>
+
+  <p>Because it’s a singleton resource, the actions are different; requesting /search calls the show action.</p>
+
+
+  <p>Now, showing a search with no query string doesn’t make sense.  /search/new is an ugly <span class='caps'>URL</span>.  I want to search as a <span class='caps'>GET</span> not a <span class='caps'>POST</span>, so you can bookmark it.  So, here’s what I ended up with.</p>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+<span class='c'># SearchController</span>
+  <span class='r'>def</span> <span class='fu'>show</span>
+    <span class='r'>if</span> params.include?(<span class='sy'>:q</span>)
+      <span class='c'># we have a query, so call create to actually do the search</span>
+      <span class='c'># don't redirect, though, there's no need, and bookmarkable</span>
+      <span class='c'># search URLs are handy</span>
+      create
+      render <span class='sy'>:action</span> =&gt; <span class='s'><span class='dl'>"</span><span class='k'>create</span><span class='dl'>"</span></span>
+    <span class='r'>else</span>
+      <span class='c'># we don't have a query, so do the new action</span>
+      new
+      render <span class='sy'>:action</span> =&gt; <span class='s'><span class='dl'>"</span><span class='k'>new</span><span class='dl'>"</span></span>
+    <span class='r'>end</span>
+  <span class='r'>end</span>
+
+  <span class='r'>def</span> <span class='fu'>create</span>
+    <span class='iv'>@search_results</span> = returning [] <span class='r'>do</span> |results|
+      results &lt;&lt; <span class='co'>Person</span>.search(params[<span class='sy'>:q</span>])
+      results &lt;&lt; <span class='co'>Event</span>.search(params[<span class='sy'>:q</span>])
+      <span class='c'># ... add other models here, or use whatever searching you need</span>
+    <span class='r'>end</span>.flatten
+  <span class='r'>end</span>
+</pre></div>
+</div>
+
+
+<div class='CodeRay'>
+  <div class='code'><pre>
+# new.rhtml
+<span class='ta'>&lt;h1&gt;</span>Search for stuff (events, workshops, trips, people...)<span class='ta'>&lt;/h1&gt;</span>
+<span class='il'><span class='dl'>&lt;%</span> form_tag search_path, <span class='sy'>:method</span> =&gt; <span class='sy'>:get</span> <span class='r'>do</span> <span class='dl'>%&gt;</span></span>
+  <span class='il'><span class='dl'>&lt;%=</span> text_field_tag <span class='sy'>:q</span> <span class='dl'>%&gt;</span></span>
+  <span class='il'><span class='dl'>&lt;%=</span> submit_tag <span class='s'><span class='dl'>"</span><span class='k'>Search</span><span class='dl'>"</span></span>, <span class='sy'>:name</span> =&gt; <span class='pc'>nil</span>  <span class='dl'>%&gt;</span></span>
+<span class='il'><span class='dl'>&lt;%</span> <span class='r'>end</span> <span class='dl'>%&gt;</span></span>
+
+# create.rhtml
+<span class='il'><span class='dl'>&lt;%</span> <span class='iv'>@search_results</span>.each <span class='r'>do</span> |result| <span class='dl'>%&gt;</span></span>
+  <span class='ta'>&lt;p&gt;</span><span class='il'><span class='dl'>&lt;%=</span> result <span class='dl'>%&gt;</span></span><span class='ta'>&lt;/p&gt;</span>
+<span class='il'><span class='dl'>&lt;%</span> <span class='r'>end</span> <span class='dl'>%&gt;</span></span>
+</pre></div>
+</div>
+
+
+  <p>Obviously you’ll format your search results more prettily, with links and such.  And you’ll need search() methods on all the classes you’re going to search.  Or, make a Searcher model and let it do all the work.</p>
+      </div>
+          <h2>Monday, July 09, 2007</h2>
+            <div class="post blog">
+        <h1><a href="/2007/7/9/rails-1-2-3-etag-patch">Rails 1.2.3 eTag patch</a></h1>
+        <p><a href='http://dev.rubyonrails.org/changeset/6158'>Rails Edge changeset 6158</a> added automatic eTag support.  I needed it in a Rails 1.2.3 project, so I made a little patch to shoehorn 6158 into 1.2.3.</p>
+
+
+  <p><a href='http://gweezlebur.com/assets/2007/7/9/patch_etag_support.rb'>Here’s the patch,</a> just drop it into lib and require it.</p>
+
+
+  <p><strong>Updated</strong>: includes <a href='http://dev.rubyonrails.org/ticket/7580'>7580</a> too.</p>
+
+
+  <p><strong>Updated again:</strong> I’m having some issues with this, so looks like I blogged it pre-maturely.</p>
+      </div>
+    
+    </div>
+    <div id="footer">
+      <a href="http://creativecommons.org/licenses/by-sa/1.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+      Copyright &copy; 1999-2008 Michael Ivey unless otherwise stated.
+      Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/1.0/">Creative Commons License</a>.
+      Powered by a hacked-up copy of the very cool
+      <a href="http://rubyforge.org/projects/tumblr/">tumblr</a>.
+    </div>
+  </div>
+</body>
+</html>

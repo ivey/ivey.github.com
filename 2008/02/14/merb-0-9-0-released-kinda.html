@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Merb 0.9.0 (developer release)</title>
+   <meta name="author" content="Michael D. Ivey" />
+
+   <!-- Feeds -->
+   <link rel="alternate" type="application/rss+xml" title="Atom" href="http://feeds2.feedburner.com/gweezlebur" />
+   <link rel="alternate" type="application/rss+xml" title="Comments" href="http://gweezlebur.disqus.com/comments.rss" />
+   <link rel="alternate" type="application/rss+xml" title="Everything" href="http://everything.gweezlebur.com/rss" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/boastful.css" type="text/css" />
+
+   <!-- OpenID -->
+   <link rel="openid.server"
+         href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate"
+         href="http://ivey.myopenid.com/" />
+   <link rel="openid2.local_id"
+         href="http://ivey.myopenid.com" />
+   <link rel="openid2.provider"
+         href="http://www.myopenid.com/server" />
+   <meta http-equiv="X-XRDS-Location"
+         content="http://www.myopenid.com/xrds?username=ivey.myopenid.com" />
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/jquery.boastful.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('#boastful').boastful();
+     });
+   </script>
+   
+</head>
+<body>
+<div id="container">
+  <div id="header">
+  <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+  <h2>Michael Ivey, blogging since '99</h2>
+  </div>
+  
+  <ul id="feeds">
+    <li><a href="/">Home</a></li>
+    <li><a href="http://everything.gweezlebur.com">Everything</a></li>
+    <li><a href="/contact">Contact</a></li>
+<!--    <li><a href="/pages">Pages</a></li>
+    <li><a href="/files">Files</a></li> /-->
+    <li><a href="/archive.html">Archive</a></li>
+  </ul>
+
+  <div id="content">
+    <div class="hentry" id="article-/2008/02/14/merb-0-9-0-released-kinda">
+  <h2>
+    <abbr class="published" title="2008-02-14T00:00:00+00:00">Thursday, February 14, 2008</abbr>
+  </h2>
+  <div class="post blog">
+  <h1 class="entry-title"><a href="/2008/02/14/merb-0-9-0-released-kinda.html">Merb 0.9.0 (developer release)</a></h1>
+  <div class="entry-content">
+    <p>A few minutes ago I pushed the gems for Merb 0.9.0 &#8220;All you need, none you don&#8217;t&#8221; to merbivore.com.  Before you run off to &#8220;gem update&#8221; there&#8217;s some things you should know.</p>
+<p>As <a href="http://yehudakatz.com/2008/01/14/merbnext/">wycats explained earlier</a> we&#8217;ve chopped Merb up a little bit.  merb-core is small, fast and just the stuff you need to build a basic web application.  merb-more is a collection of things that make it cooler and more useful, like mailers and generators and template engines.  Together, merb-core and merb-more make up &#8220;merb&#8221;.  You&#8217;ll still be able to gem install merb and have it work, or you can cherrypick just the pieces you want for your application.</p>
+<p>We&#8217;ve also got a decent collection of &#8220;official&#8221; plugins, including all the <span class="caps">ORM</span> plugins, and some additional rspec and test/unit support.</p>
+<p>Anytime you gut a codebase like we did with Merb after 0.5, there&#8217;s stuff that doesn&#8217;t shake out properly.  We had planned to release 0.9.0 last weekend during acts_as_conference, but there&#8217;s still some little stuff that needs shaking.</p>
+<p>Normally, we&#8217;d just get people to use trunk and see what needed doing, and then call it a release.  This time, we don&#8217;t really have a good sense of exactly where the rough spots are between all the moving parts.</p>
+<p>We need your help.</p>
+<p>Here&#8217;s 0.9.0, and it&#8217;s a real release.  It&#8217;s official.  It&#8217;s just not on the Rubyforge gem repository yet.  We&#8217;re calling it a &#8220;developer release&#8221; and it&#8217;s like a release candidate, except we don&#8217;t think we&#8217;ll actually release it.  Once people use it, and we oil some of those squeaky spots, we&#8217;ll push an 0.9.1.  We may do a few of these developer releases before we decide we&#8217;re ready to push it to Rubyforge for general consumption.</p>
+<p>These developer releases are here to make sure that Merb 1.0 is as good as it can be, so if you want to see an awesome Merb 1.0, please use these 0.9.0 gems, and future dev releases, and give us feedback.</p>
+<p>If you have RubyGems 1.0.1, and want to always use these developer releases whenever they&#8217;re available:</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>If you don&#8217;t, or you don&#8217;t:</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>As always, <a href="http://merb.lighthouseapp.com">put your bugs and patches in Lighthouse</a> and join the discussion on #merb.</p>
+<p>PS: Want to see something cool?</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+  </div>
+</div>
+
+<div id="boastful">
+  <h2>Discussion</h2>
+  <div class="personal">
+    <a href="https://twitter.com/ivey"><img src="http://www.gravatar.com/avatar/a667482dce34922ec51f6b044d253d47?s=50" /></a>
+    <p>
+      <a href="https://twitter.com/ivey">Follow me on Twitter</a>. I don't have comments enabled, because I remember
+      when we didn't have blog comments, and we did just fine, thank you very much.
+    </p>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ivey">Tweet</a>
+    <a href="http://twitter.com/ivey" class="twitter-follow-button" data-show-count="false">Follow @ivey</a>
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  </div>
+</div>
+
+<div id="related">
+  <h2>Possibly Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>10 Sep 2011</span> &raquo; <a href="/2011/09/10/kittens.html">Kittens</a></li>
+    
+      <li><span>31 Jan 2010</span> &raquo; <a href="/2010/01/31/how-i-use-foursquare.html">How I use Foursquare</a></li>
+    
+      <li><span>13 Dec 2009</span> &raquo; <a href="/2009/12/13/retweet-replies.html">My Proposed Solution to the "Can't Comment On RTs" Problem: Retweet-Replies</a></li>
+    
+  </ul>
+</div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+    Copyright &copy; 1998-2011 Michael D. Ivey unless otherwise stated.
+    Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons License</a>.
+  </div>
+
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7169476-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
+</body>
+</html>

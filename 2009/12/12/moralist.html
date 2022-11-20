@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Introducing Moralist</title>
+   <meta name="author" content="Michael D. Ivey" />
+
+   <!-- Feeds -->
+   <link rel="alternate" type="application/rss+xml" title="Atom" href="http://feeds2.feedburner.com/gweezlebur" />
+   <link rel="alternate" type="application/rss+xml" title="Comments" href="http://gweezlebur.disqus.com/comments.rss" />
+   <link rel="alternate" type="application/rss+xml" title="Everything" href="http://everything.gweezlebur.com/rss" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/boastful.css" type="text/css" />
+
+   <!-- OpenID -->
+   <link rel="openid.server"
+         href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate"
+         href="http://ivey.myopenid.com/" />
+   <link rel="openid2.local_id"
+         href="http://ivey.myopenid.com" />
+   <link rel="openid2.provider"
+         href="http://www.myopenid.com/server" />
+   <meta http-equiv="X-XRDS-Location"
+         content="http://www.myopenid.com/xrds?username=ivey.myopenid.com" />
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/jquery.boastful.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('#boastful').boastful();
+     });
+   </script>
+   
+</head>
+<body>
+<div id="container">
+  <div id="header">
+  <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+  <h2>Michael Ivey, blogging since '99</h2>
+  </div>
+  
+  <ul id="feeds">
+    <li><a href="/">Home</a></li>
+    <li><a href="http://everything.gweezlebur.com">Everything</a></li>
+    <li><a href="/contact">Contact</a></li>
+<!--    <li><a href="/pages">Pages</a></li>
+    <li><a href="/files">Files</a></li> /-->
+    <li><a href="/archive.html">Archive</a></li>
+  </ul>
+
+  <div id="content">
+    <div class="hentry" id="article-/2009/12/12/moralist">
+  <h2>
+    <abbr class="published" title="2009-12-12T00:00:00+00:00">Saturday, December 12, 2009</abbr>
+  </h2>
+  <div class="post blog">
+  <h1 class="entry-title"><a href="/2009/12/12/moralist.html">Introducing Moralist</a></h1>
+  <div class="entry-content">
+    <p>I love Twitter lists. Really. I think they&#8217;re one of the most important features Twitter has rolled out in the past year, even more than geotweets.</p>
+
+<p>First off, I think they&#8217;ll slowly be the end of Follow Friday. Why plug people one day a week when you can have a list of people you suggest all the time? Even better, you can have multiple lists, organized by topic.</p>
+
+<p>More importantly, though, lists mean I can have multiple timelines. I have my main timeline of people I follow all the time. When they say something, I want to see it. (I haven&#8217;t completely cleaned up my following list yet, but I dropped more than 100 people when I started using lists.) There are a lot of the people who are funny, but I don&#8217;t need to see every tweet from them. They&#8217;re on my <a href='http://twitter.com/ivey/funny-people'>@ivey/funny-people</a> list, and I read them when I have time.</p>
+
+<p>The problem is, not only do I have my list of funny people, but I also follow a few other people&#8217;s lists of funny people, like <a href='http://twitter.com/Favstar/rising-stars'>@Favstar/rising-stars</a> and <a href='http://twitter.com/Favstar/top-50-funny'>@Favstar/top-50-funny</a>. There&#8217;s a lot of overlap between these lists, which means I see the same tweets 2 or 3 times. That bugs me.</p>
+
+<p>So I fixed it. First, I made a little library called, creatively, <a href='http://github.com/ivey/twitter-lists'>twitter-lists</a>. It uses the twitter gem to do some set-based operations on Twitter lists, mainly Union and Intersection. It&#8217;s not fully fleshed out yet, but it&#8217;s usable. Patches welcome.</p>
+
+<p>Then, I made an app that uses it: <a href='http://moralist.gweezlebur.com'>Moralist</a>. Moralist makes it easy to combine lists in interesting ways. I&#8217;m using it to merge <a href='http://twitter.com/Favstar/rising-stars'>@Favstar/rising-stars</a>, <a href='http://twitter.com/Favstar/top-50-funny'>@Favstar/top-50-funny</a>, and <a href='http://twitter.com/ivey/funny-people'>@ivey/funny-people</a> into a single list, <a href='http://twitter.com/ivey/funny-hah'>@ivey/hah</a>. This is the list I read when I have a few minutes and need a chuckle (although <a href='http://favstar.fm'>Favstar&#8217;s</a> Favit iPhone app is replacing it, but that&#8217;s another story.)</p>
+
+<p>Anyway, try it out. It refreshes once a day, it crashes sometimes, and it comes with no warranty. If people find it useful, I might bump it up to a paid Heroku plan, but for now it meets my needs so I&#8217;m leaving it alone.</p>
+
+<p>PS: here&#8217;s a snippet from Moralist to make a twitter-auth app able to use the twitter gem using the same set of keys: <a href='http://gist.github.com/255214'>http://gist.github.com/255214</a></p>
+  </div>
+</div>
+
+<div id="boastful">
+  <h2>Discussion</h2>
+  <div class="personal">
+    <a href="https://twitter.com/ivey"><img src="http://www.gravatar.com/avatar/a667482dce34922ec51f6b044d253d47?s=50" /></a>
+    <p>
+      <a href="https://twitter.com/ivey">Follow me on Twitter</a>. I don't have comments enabled, because I remember
+      when we didn't have blog comments, and we did just fine, thank you very much.
+    </p>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ivey">Tweet</a>
+    <a href="http://twitter.com/ivey" class="twitter-follow-button" data-show-count="false">Follow @ivey</a>
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  </div>
+</div>
+
+<div id="related">
+  <h2>Possibly Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>10 Sep 2011</span> &raquo; <a href="/2011/09/10/kittens.html">Kittens</a></li>
+    
+      <li><span>31 Jan 2010</span> &raquo; <a href="/2010/01/31/how-i-use-foursquare.html">How I use Foursquare</a></li>
+    
+      <li><span>13 Dec 2009</span> &raquo; <a href="/2009/12/13/retweet-replies.html">My Proposed Solution to the "Can't Comment On RTs" Problem: Retweet-Replies</a></li>
+    
+  </ul>
+</div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+    Copyright &copy; 1998-2011 Michael D. Ivey unless otherwise stated.
+    Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons License</a>.
+  </div>
+
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7169476-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
+</body>
+</html>

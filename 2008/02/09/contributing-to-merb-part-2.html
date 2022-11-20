@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Contributing to Merb (Part 2)</title>
+   <meta name="author" content="Michael D. Ivey" />
+
+   <!-- Feeds -->
+   <link rel="alternate" type="application/rss+xml" title="Atom" href="http://feeds2.feedburner.com/gweezlebur" />
+   <link rel="alternate" type="application/rss+xml" title="Comments" href="http://gweezlebur.disqus.com/comments.rss" />
+   <link rel="alternate" type="application/rss+xml" title="Everything" href="http://everything.gweezlebur.com/rss" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/boastful.css" type="text/css" />
+
+   <!-- OpenID -->
+   <link rel="openid.server"
+         href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate"
+         href="http://ivey.myopenid.com/" />
+   <link rel="openid2.local_id"
+         href="http://ivey.myopenid.com" />
+   <link rel="openid2.provider"
+         href="http://www.myopenid.com/server" />
+   <meta http-equiv="X-XRDS-Location"
+         content="http://www.myopenid.com/xrds?username=ivey.myopenid.com" />
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/jquery.boastful.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function() {
+       $('#boastful').boastful();
+     });
+   </script>
+   
+</head>
+<body>
+<div id="container">
+  <div id="header">
+  <h1><a href="/">gweezlebur<span class="large-dot">.</span>com</a></h1>
+  <h2>Michael Ivey, blogging since '99</h2>
+  </div>
+  
+  <ul id="feeds">
+    <li><a href="/">Home</a></li>
+    <li><a href="http://everything.gweezlebur.com">Everything</a></li>
+    <li><a href="/contact">Contact</a></li>
+<!--    <li><a href="/pages">Pages</a></li>
+    <li><a href="/files">Files</a></li> /-->
+    <li><a href="/archive.html">Archive</a></li>
+  </ul>
+
+  <div id="content">
+    <div class="hentry" id="article-/2008/02/09/contributing-to-merb-part-2">
+  <h2>
+    <abbr class="published" title="2008-02-09T00:00:00+00:00">Saturday, February 09, 2008</abbr>
+  </h2>
+  <div class="post blog">
+  <h1 class="entry-title"><a href="/2008/02/09/contributing-to-merb-part-2.html">Contributing to Merb (Part 2)</a></h1>
+  <div class="entry-content">
+    <p><a href="http://gweezlebur.com/2008/2/1/so-you-want-to-contribute-to-merb-core-part-1">In Part 1</a> I talked about how to use git to work on the merb-core/merb-more projects that will be Merb 0.9.</p>
+<p>This time I&#8217;ll show you a different workflow, for people who plan to make a lot of changes, or want to do something interesting and maintain it as a public fork.</p>
+<p>Forking is sometimes a bad word, but no more!  In this new gitastic world, forking is a cool thing.  That&#8217;s why Github makes it so easy to do!  When you fork, you do the same thing as when you clone&#8230;.you just make your clone accessible to the world.</p>
+<h3>Step 1: Fork</h3>
+<p>Every Github project has a prominent &#8220;Fork&#8221; button, if you&#8217;re logged in.</p>
+<p><img src="http://gweezlebur.com/assets/2008/2/7/fork.jpg" alt="" /></p>
+<p>So the first step is to click that button.  As simple as that, you&#8217;ve made your own repository based on the original.  You can add other people to it, accept patches, whatever you like.  (In fact, I really hope someone will fork merb-core and merb-more, declare themselves to be the coordinator of documentation patches, and periodically feed those back to the main repos)</p>
+<p>Play around with the settings.  You can&#8217;t break it, and if you do, you can delete it and start over.  Forks are cheap.</p>
+<h3>Step 2: Clone your new repo</h3>
+<p>Instead of cloning wycats&#8217; repo, you want to clone your own.  For instance, I have my own merb-core for experimental stuff, or if I want to give someone commit for a while to work on something together.  When I clone my repo, I use the following:</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>(This is not completely true.  I have a much more complicated setup, which I may detail in Part 3)</p>
+<p>Now, you probably want a way to keep in sync with the official repo.  So let&#8217;s add it, too:</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>Now, anytime you want to sync up, you can use either of the following:</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>The first version does an automatic commit of the merge, the second doesn&#8217;t.</p>
+<h3>Step 3: Fix stuff</h3>
+<p>This is where it gets fun.  This is your repo.  Make some changes.  Use &#8216;git push&#8217; to push them up to your github repo.  Share them with #merb.  Get people to run your version and try the changes out.  Fix bugs.</p>
+<p>If you&#8217;re hoping to get your changes merged back in, it&#8217;s a good idea to communicate with us about what you&#8217;re doing.</p>
+<p>If you&#8217;re working on multiple big projects, it&#8217;s a <strong>really</strong> good idea to keep each one in a separate remote branch, so we can merge one without merging all of them.  We can cherry-pick if needed, but it&#8217;s easier if you use branches.</p>
+<p>Liquid error: No such file or directory &#8211; posix_spawnp</p>
+<p>Or, you can <tt>git push  &#8212;tags </tt> and push <strong>all</strong> of your local tags to your remote repo.  Hey, it&#8217;s your repo, use it how you like.</p>
+<h3>Step 4: Getting changes merged</h3>
+<p>Now you need to get someone to merge your changes.  Ideally, you&#8217;ll already have an open ticket in Lighthouse, have been in communication with folks in #merb, and maybe even have talked to one of the core devs about your changes.</p>
+<p>Update your ticket and add:<br />
+<pre><br />
+   Hey, I have this fixed in my repo.</p>
+Please pull:
+
+git pull git://github.com/jimmyhoffa/merb-core.git feature1
+<p></pre></p>
+<p>The important things to note are that you use <strong>your</strong> repo <span class="caps">URL</span>, you make it easy to copy/paste directly (starting it with &#8216;git pull&#8217;) and that you include the remote branch, <strong>even if it is master</strong>.</p>
+<p>(Github will soon be adding a &#8220;Pull Request&#8221; button, so you can notify about patches via Github.  Keep an eye out for that.)</p>
+<p>If your changes are accepted, you&#8217;ll see your commits show up in the main repo and there will be much adulation.  Hooray!  This doesn&#8217;t even begin to scratch the surface of how awesome git is, but it should get you going.  Oh, and if you&#8217;re like me, you&#8217;re dying to <a href="http://pastie.caboo.se/private/woiyw5qny3mpl2zlwoya">know how git works on the inside</a></p>
+  </div>
+</div>
+
+<div id="boastful">
+  <h2>Discussion</h2>
+  <div class="personal">
+    <a href="https://twitter.com/ivey"><img src="http://www.gravatar.com/avatar/a667482dce34922ec51f6b044d253d47?s=50" /></a>
+    <p>
+      <a href="https://twitter.com/ivey">Follow me on Twitter</a>. I don't have comments enabled, because I remember
+      when we didn't have blog comments, and we did just fine, thank you very much.
+    </p>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="ivey">Tweet</a>
+    <a href="http://twitter.com/ivey" class="twitter-follow-button" data-show-count="false">Follow @ivey</a>
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+  </div>
+</div>
+
+<div id="related">
+  <h2>Possibly Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>10 Sep 2011</span> &raquo; <a href="/2011/09/10/kittens.html">Kittens</a></li>
+    
+      <li><span>31 Jan 2010</span> &raquo; <a href="/2010/01/31/how-i-use-foursquare.html">How I use Foursquare</a></li>
+    
+      <li><span>13 Dec 2009</span> &raquo; <a href="/2009/12/13/retweet-replies.html">My Proposed Solution to the "Can't Comment On RTs" Problem: Retweet-Replies</a></li>
+    
+  </ul>
+</div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights" /></a> 
+    Copyright &copy; 1998-2011 Michael D. Ivey unless otherwise stated.
+    Unless otherwise noted, all content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons License</a>.
+  </div>
+
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7169476-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
+</body>
+</html>
