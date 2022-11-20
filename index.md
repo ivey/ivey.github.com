@@ -1,40 +1,40 @@
 <main>
-<div class="h-card" rel="author">
-  <img class="u-photo" alt="My profile photo" src="me.jpg" />
-  <h1>
-    <span class="p-name">Michael D. Ivey</span>
-    <span class="p-nickname">(Gweezlebur)</span>
-  </h1>
+  <div class="h-card" rel="author">
+    <img class="u-photo" alt="My profile photo" src="me.jpg" />
+    <h1>
+      <span class="p-name">Michael D. Ivey</span>
+      <span class="p-nickname">(Gweezlebur)</span>
+    </h1>
 
     <p class="p-note">
       Software engineer. Video game maker. RPG enthusiast. Wrangler of cats. Girl Scout.
     </p>
 
-  <ul>
-    <li><a class="u-uid u-url" href="https://gweezlebur.com">web</a></li>
-    <li><a class="u-email" href="mailto:ivey@gweezlebur.com" rel="me">ivey@gweezlebur.com</a></li>
-  </ul>
-</div>
+    <ul class="card-links">
+      <li><a class="u-uid u-url" href="https://gweezlebur.com">https://gweezlebur.com</a></li>
+      <li><a class="u-email" href="mailto:ivey@gweezlebur.com" rel="me">ivey@gweezlebur.com</a></li>
+    </ul>
+  </div>
 
-  <h1>Recent Posts</h1>
+  <h1>Stuff</h1>
   <ul class="posts">
     {% for post in site.posts limit:1 %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
-    <li><a href="posts.html">More posts</a></li>
     <li><a href="/pooh.html"><i>Tao of Pooh</i> quotes page I've been dragging around since 1999</a></li>
     <li><a href="/poem.html"><i>Poem for Jen</i>, the origin of Gweezlebur</a></li>
+    <li><a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a></li>
+    <li><a href="posts.html">More posts...</a></li>
   </ul>
 
-<h2>Elsewhere</h2>
-<ul>
-    <li><a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a></li>
+  <h1>Elsewhere</h1>
+  <ul>
     <li><a href="https://tilde.zone/@ivey" rel="me">fediverse - @ivey@tilde.zone</a></li>
-    <li><a href="https://github.com/ivey" rel="me">github- @ivey</a></li>
+    <li><a href="https://discord.gg/ZcUq4Hu" rel="discord">My Discord Server</a></li>
+    <li><a href="https://github.com/ivey" rel="me">github - @ivey</a></li>
     <li><a href="https://twitter.com/ivey" rel="me">twitter - @ivey</a></li>
     <li><a href="mailto:ivey@tilde.club" rel="me">ivey@tilde.club - alt email</a></li>
     <li><a href="mailto:michael.ivey@google.com" rel="me">michael.ivey@gmail.com - Google</a></li>
-    <li><a href="https://discord.gg/ZcUq4Hu" rel="discord">My Discord Server</a></li>
     <li><a href="https://mltshp.com/user/ivey" rel="me">mltshp - ivey</a></li>
     <li><a href="https://cohost.org/ivey" rel="me">cohost - ivey</a></li>
     <li><a href="https://twitch.tv/gweezlebur" rel="me">Twitch - Gweezlebur</a></li>
