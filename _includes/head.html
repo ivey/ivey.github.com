@@ -1,0 +1,26 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    {%- if page.title -%}
+      {{ page.title }}
+    {%- else -%}
+      {{ site.title }}
+    {%- endif -%}
+  </title>
+
+  {%-seo title=false-%}
+  {%-feed_meta-%}
+
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
+
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+  <link rel="microsub" href="https://aperture.p3k.io/microsub/806">
+  <link rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">
+  <style>
+    img.u-photo { border-radius: 50%; }
+  </style>
+</head>

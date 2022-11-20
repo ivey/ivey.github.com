@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/ivey
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://gweezlebur.com
+  * I am ivey (https://keybase.io/ivey) on keybase.
+  * I have a public key with fingerprint 2ABD 95F6 54E1 7E04 70D4  B8D1 8473 F73D E6D0 EB16
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "2abd95f654e17e0470d4b8d18473f73de6d0eb16",
+            "host": "keybase.io",
+            "key_id": "8473f73de6d0eb16",
+            "uid": "fa325eed546c5907927f48f68478c500",
+            "username": "ivey"
+        },
+        "service": {
+            "hostname": "gweezlebur.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1408587397,
+    "expire_in": 157680000,
+    "prev": "29e98ae071d6617486875f58092c6cde5fef6e01aa5f9f49ff0b6ead440a17f4",
+    "seqno": 13,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.3.1
+Comment: https://keybase.io/crypto
+
+yML4AnicO8LLzMDF2FL83fbZhddijKcPfChlCP4a1lqtlJSfUqlkVa2UnQqm0jLz
+0lOLCooy80qUrJSMEpNSLE3TzExNUg3NUw1MzA1STJIsUgwtTMyN08yNU1LNUgxS
+kwzNlHSUMvKLQTqAxiQlFqfqZeYDxYCc+MwUoCgW9aVgibREYyPT1NQUUxOzZFNL
+A3NLI/M0E4s0M6AGi2RTAwOQwuLUorzE3FSg6swyoCNrdZSAImWZyakg94Kshcqm
+l6emVuWkJpUW6SXn5wJ1FhTll+Qn5+cA5TJKSgqsQFpLKgtAastTk+KhpsQnZeal
+AH0N1FCWWlScmZ+nZGUIVJlckgky1tDEwMLUwtzY0lxHKbWiILMoNT4TpMLU3MzC
+AAhA1qSWgcLKMtXSIjHVwNwwxczM0NzEwszC3DTN1MLA0ijZLDkl1TQtNc0s1cAw
+MdE0zTLNxDItzSDJLDUxxcTEINEQ6GslkL8K8/KBZhsD3ZmYDjSzODM9L7GktChV
+qfbQwRgWBkYuBjZWJlDEMXBxCsCis+YE//90n7BZJzSDfoWYhP45IbLlzAeGOqNl
+MtNciifK1M8R2J6VYzR5fURfYNC/J+EBFw7dkasUlAqo3P3j2qyKX+7TfvrZqaY9
+MGV0lzLZ+av805TfGUqvz+mFvd8ilS3IJPvlX4hC2YFlGiYsVoLXnr/KtGXauFol
+NY5X5us7naZFDHnuvhM/TVLmi5Wq6z/zYKJK+ot5q5684X8/7+yabtdXC7nYNrA7
+bbdctci069vBBi7ObeXp5kzSHQFvFnf0WBX0Rz85qzpp7uaks+4nQtRe9/s2NnHP
+rLfzYv2vWJnn88CYoW6VllrMLt2vLdcybysaLVsxafo/l/jlgc7Ml88a/n265aqh
++oz3p1i+9nXN7ni/2dqFe5anzKb/gq7ihn9q5BYILOzLjKp8ajj3UF+HylYHz8uV
+7Tf/pIR81C07qp9kKpnrPyEoTOqd/uqEB7czn/ec/p0dZb7+1rSpYjvqd+S2XHYK
+T0z8yLO7+daaA44CDoKWP8T+7y5Z1LMvft9u7YmvF4rtPHaX6THPufDTE1mZE09N
+7Z3EvEW3ZO/u0u5lxnt+TeJ72bwrt0VSYGfaNIWeVSoawqkb77U+Wcocytt0asu2
+5TnzHE8GTi7qFV91M+H0NvdPd39Zrnw108vRMHy9/Oy7ZvUXbprLxSbf3ZRg1y9u
+elmz0sH04/vt50S3BCg/5Qv9vJdNN2vrfte6rNulbN9v2G2rswcALwCTqQ==
+=d2Ze
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ivey
+
+==================================================================
