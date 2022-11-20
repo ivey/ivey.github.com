@@ -1,0 +1,3 @@
+pygments: true
+markdown: kramdown
+remote_theme: riggraz/no-style-please
