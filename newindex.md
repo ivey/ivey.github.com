@@ -14,7 +14,15 @@
 - <a href="/pooh.html"><i>Tao of Pooh</i> quotes page I've been dragging around since 1999</a>
 - <a href="/poem.html"><i>Poem for Jen</i>, the origin of Gweezlebur</a>
 - <a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a>
-- More to come soon?<
+- More to come soon?
+
+  <h1>Recent Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts limit:5 %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    <li><a href="posts.html">More...</a></li>
+  </ul>
 
     <ul style="display:none;">
       <li><a class="u-uid u-url" href="https://gweezlebur.com">web</a></li>
