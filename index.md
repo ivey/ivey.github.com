@@ -39,10 +39,11 @@
     <li><a href="https://mltshp.com/user/ivey" rel="me">mltshp - ivey</a></li>
     <li><a href="https://cohost.org/ivey" rel="me">cohost - ivey</a></li>
     <li><a href="https://twitch.tv/gweezlebur" rel="me">Twitch - Gweezlebur</a></li>
+    <li><a href="https://steamcommunity.com/id/gweezlebur/" rel="me">Steam - gweezlebur</a></li>
+    <li><a href="https://robertsspaceindustries.com/citizens/Gweezlebur" rel="me">Star Citizen - Gweezlebur</a></li>
     <li><a href="https://www.instagram.com/ivey/" rel="me">Instagram</a></li>
     <li><a href="https://www.facebook.com/michaelivey/" rel="me">Facebook</a></li>
     <li><a href="https://www.linkedin.com/in/michaelivey/" rel="me">LinkedIn</a></li>
     <li><a href="https://reddit.com/u/ivey" rel="me">Reddit - ivey</a></li>
-    <li><a href="https://robertsspaceindustries.com/citizens/Gweezlebur" rel="me">Star Citizen - Gweezlebur</a></li>
   </ul>
 </main>
