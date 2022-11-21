@@ -29,7 +29,7 @@
 
   <h1>Elsewhere</h1>
   <ul>
-    <li>`Riot Gweezlebur#LOR` on Legends of Runeterra, League of Legends, Valorant, other Riot games</li>
+    <li><b>Riot Gweezlebur#LOR</b> on Legends of Runeterra, League of Legends, Valorant, other Riot games</li>
     <li><a href="https://tilde.zone/@ivey" rel="me">Fediverse - @ivey@tilde.zone</a></li>
     <li><a href="https://discord.gg/ZcUq4Hu" rel="discord">My Discord Server</a></li>
     <li><a href="https://github.com/ivey" rel="me">Github - @ivey</a></li>
