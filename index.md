@@ -29,10 +29,11 @@
 
   <h1>Elsewhere</h1>
   <ul>
-    <li><a href="https://tilde.zone/@ivey" rel="me">fediverse - @ivey@tilde.zone</a></li>
+    <li>`Riot Gweezlebur#LOR` on Legends of Runeterra, League of Legends, Valorant, other Riot games</li>
+    <li><a href="https://tilde.zone/@ivey" rel="me">Fediverse - @ivey@tilde.zone</a></li>
     <li><a href="https://discord.gg/ZcUq4Hu" rel="discord">My Discord Server</a></li>
-    <li><a href="https://github.com/ivey" rel="me">github - @ivey</a></li>
-    <li><a href="https://twitter.com/ivey" rel="me">twitter - @ivey</a></li>
+    <li><a href="https://github.com/ivey" rel="me">Github - @ivey</a></li>
+    <li><a href="https://twitter.com/ivey" rel="me">Twitter - @ivey</a></li>
     <li><a href="mailto:ivey@tilde.club" rel="me">ivey@tilde.club - alt email</a></li>
     <li><a href="mailto:michael.ivey@google.com" rel="me">michael.ivey@gmail.com - Google</a></li>
     <li><a href="https://mltshp.com/user/ivey" rel="me">mltshp - ivey</a></li>
@@ -42,5 +43,6 @@
     <li><a href="https://www.facebook.com/michaelivey/" rel="me">Facebook</a></li>
     <li><a href="https://www.linkedin.com/in/michaelivey/" rel="me">LinkedIn</a></li>
     <li><a href="https://reddit.com/u/ivey" rel="me">Reddit - ivey</a></li>
+    <li><a href="https://robertsspaceindustries.com/citizens/Gweezlebur" rel="me">Star Citizen - Gweezlebur</a></li>
   </ul>
 </main>
