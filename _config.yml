@@ -4,3 +4,7 @@ remote_theme: riggraz/no-style-please
 name: gweezlebur.com
 description: Internet home of Michael D. Ivey since '99
 url: https://gweezlebur.com
+collections:
+  microblog:
+    output: true
+    permalink: m/:year/:month/:day/:hour:minute:second
