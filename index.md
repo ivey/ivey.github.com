@@ -18,6 +18,7 @@
 
   <h1>Stuff</h1>
   <ul class="posts">
+    <li><a href="micro.html">microblog</a></li>
     {% for post in site.posts limit:1 %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
