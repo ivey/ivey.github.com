@@ -6,5 +6,6 @@ description: Internet home of Michael D. Ivey since '99
 url: https://gweezlebur.com
 collections:
   notes:
+    layout: post
     output: true
     permalink: notes/:year/:month/:day/:hour:minute:second
