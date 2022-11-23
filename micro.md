@@ -1,5 +1,5 @@
 <h1>Microblog</h1>
-<p>Stuff I post ends up here, and then gets synced to <a href="https://gweezlebur.micro.blog">micro.blog</a> which then
+<p>Stuff I post ends up here, and then gets synced to <a href="https://micro.blog/gweezlebur">micro.blog</a> which then
   publishes it out to <a href="https://twitter.com/ivey">Twitter</a>,
   <a href="https://tilde.zone/@ivey">Mastodon</a> and <a href="https://ivey.tumblr.com">tumblr</a>. If you follow me
   any of those places, you'll see all of this there.</p>
