@@ -7,8 +7,8 @@ layout: none
 		<title>{{ site.name | xml_escape }}</title>
 		<description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>		
 		<link>{{ site.url }} microblog</link>
-		<atom:link href="{{ site.url }}/microblog.xml" rel="self" type="application/rss+xml" />
-		{% for post in site.notes limit:10 %}
+		<atom:link href="{{ site.url }}/micro.xml" rel="self" type="application/rss+xml" />
+		{% for post in site.micro limit:10 %}
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
 				<description>{{ post.content | xml_escape }}</description>
