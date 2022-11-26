@@ -1,5 +1,5 @@
 ---
-title: Finished Project: Grey Scarf
+title: Finished Project - Grey Scarf
 layout: post
 date: 2022-11-26 11:00:00
 ---
