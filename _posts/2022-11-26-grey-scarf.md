@@ -1,5 +1,5 @@
 ---
-title: Finished Project - Grey Scarf
+title: "Finished Project:  Grey Scarf"
 layout: post
 date: 2022-11-26 11:00:00
 ---
@@ -14,7 +14,8 @@ And everyone knows cats love scarves.
 I started over a few times to get the width right, and then just went until
 it felt long enough.
 
-I used some yarn from Emily's stash, <a href="http://www.tomorrowfarm.net">Tomorrow Farm</a> Kodiak, organic merino wool. I used her US 11 needles - I'm
+I used some yarn from Emily's stash, Tomorrow Farm (now <a href="https://camelotdyeworks.com">Camelot Dyeworks</a>) Kodiak,
+an organic merino wool. I used her US 11 needles - I'm
 not commited enough to have my own needles. Yet? We'll see.
 
 <img src="/assets/2022/washington-models-grey-scarf.jpg" alt="a black cat wearing the grey scarf, looking into the distance" />
