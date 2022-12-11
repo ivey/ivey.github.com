@@ -1,11 +1,7 @@
-<html>
+---
+title: Ivey Family Games for Sale
+---
 
-<head>
-    <title>Ivey Family Games for Sales</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-</head>
-
-<body>
     <h1>Games For Sale</h1>
     <p>I'm downsizing my game collection, and here's what's available. If you're local to the Shoals, we can arrange a meetup. Otherwise, I'm happy to take it to the post office if you want to pay for shipping. All my contact info is <a href="/">here</a>.</p>
     <ul>
@@ -15,10 +11,10 @@
         <li><a href="https://www.kickstarter.com/projects/laurob/a-duel-betwixt-us">Duel betwixt us</a> $20</li>
         <li><a href="https://buywegames.com/products/kings-table">Kings table the game of Vikings</a> $10</li>
         <li><a href="https://boardgamegeek.com/boardgame/18866/shear-panic">Shear panic</a> $10</li>
-        <li><a href="https://boardgamegeek.com/boardgame/180761/dreamwell">Dreamwell</a> $20
+        <li><a href="https://boardgamegeek.com/boardgame/180761/dreamwell">Dreamwell</a> $20</li>
         <li><a href="https://boardgamegeek.com/boardgame/280592/mystery-mansion-storytelling-card-game">The mystery
                 mansion</a> $10</li>
-        <li><a href="https://boardgamegeek.com/boardgame/181810/kodama-tree-spirits">Kodama</a> $10
+        <li><a href="https://boardgamegeek.com/boardgame/181810/kodama-tree-spirits">Kodama</a> $10</li>
         <li><a href="https://www.kickstarter.com/projects/1312152563/five-ravens-a-15-minute-deckbuilding-game-of-gothi">Five
                 ravens</a> $10</li>
         <li><a href="https://www.fowers.games/products/paperback">Paperback</a> $10
@@ -88,6 +84,3 @@
         <li>208 piece map puzzle $5</li>
         <li>Wooden bear puzzle $5</li>
     </ul>
-</body>
-
-</html>
