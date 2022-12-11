@@ -2,10 +2,9 @@
 title: Ivey Family Games for Sale
 ---
 
-Games For Sale
-==============
+# Ivey Family Games For Sale
 
-I'm downsizing my game collection, and here's what's available. If you're local to the Shoals, we can arrange a meetup. Otherwise, I'm happy to take it to the post office if you want to pay for shipping. All my contact info is <a href="/">here</a>.
+We are downsizing our game collection, and here's what's available. If you're local to the Shoals, we can arrange a meetup. Otherwise, I'm happy to take it to the post office if you want to pay for shipping. All my contact info is <a href="/">here</a>.
 
 * <a href="https://upperstory.com/turingtumble/">Turing Tumble</a> $30
 * <a href="https://www.daysofwonder.com/tickettoride/en/usa/">Ticket to ride</a> $15
