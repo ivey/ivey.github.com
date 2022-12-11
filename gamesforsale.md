@@ -6,6 +6,8 @@
 </head>
 
 <body>
+    <h1>Games For Sale</h1>
+    <p>I'm downsizing my game collection, and here's what's available. If you're local to the Shoals, we can arrange a meetup. Otherwise, I'm happy to take it to the post office if you want to pay for shipping. All my contact info is <a href="/">here</a>.</p>
     <ul>
         <li><a href="https://upperstory.com/turingtumble/">Turing Tumble</a> $30</li>
         <li><a href="https://www.daysofwonder.com/tickettoride/en/usa/">Ticket to ride</a> $15</li>
