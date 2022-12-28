@@ -19,7 +19,7 @@
   <h1>Stuff</h1>
   <ul class="posts">
     <li><a href="micro.html">microblog</a></li>
-    {% for post in site.posts limit:2 %}
+    {% for post in site.posts limit:3 %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
     <li><a href="/pooh.html"><i>Tao of Pooh</i> quotes page I've been dragging around since 1999</a></li>
