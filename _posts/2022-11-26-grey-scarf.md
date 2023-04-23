@@ -22,3 +22,6 @@ not commited enough to have my own needles. Yet? We'll see.
 
 Here he is posing to show it off. He likes wearing it way more than I
 expected him to, he's kept it on for hours at a time while he naps.
+
+<hr/>
+<a href="https://www.ravelry.com/projects/gweezlebur/washingtons-scarf">view on Ravelry</a>

@@ -22,3 +22,6 @@ but that's how you know it was handmade.
 I didn't expect to enjoy knitting as much as I am. I'm already practicing
 purling on a little practice square, and then will see what my next project
 will be. My goal is to work up to socks.
+
+<hr/>
+<a href="https://www.ravelry.com/projects/gweezlebur/moms-scarf">view on Ravelry</a>
