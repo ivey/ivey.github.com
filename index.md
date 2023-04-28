@@ -47,5 +47,6 @@
     <li><a href="https://www.facebook.com/michaelivey/" rel="me">Facebook</a></li>
     <li><a href="https://www.linkedin.com/in/michaelivey/" rel="me">LinkedIn</a></li>
     <li><a href="https://reddit.com/u/ivey" rel="me">Reddit - ivey</a></li>
+    <li><a href="https://staging.bsky.app/profile/gweezlebur.com" rel="me">Bluesky - @gweezlebur.com</a></li>
   </ul>
 </main>
