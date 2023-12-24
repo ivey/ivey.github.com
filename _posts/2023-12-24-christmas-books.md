@@ -5,7 +5,7 @@ date: 2023-12-24 14:51:00
 ---
 
 The Ivey Family did our usual "go get
-Christmas books" joirney today, but we
+Christmas books" journey today, but we
 mixed it up a little, and walked. It's been
 our dream to walk to the bookstore for years.
 When we first moved to Tuscumbia, we got
