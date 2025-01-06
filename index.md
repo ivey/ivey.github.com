@@ -18,7 +18,6 @@
 
   <h1>Stuff</h1>
   <ul class="posts">
-    <li><a href="micro.html">microblog</a></li>
     {% for post in site.posts limit:5 %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
@@ -27,6 +26,8 @@
     <li><a rel="pgpkey" href="BA7ECBB6D4F40AEC02F38B05D65AFD1028BBA035.asc">new GPG key for 2022</a></li>
     <li><a href="posts.html">More posts...</a></li>
   </ul>
+
+  <img src="/images/angus.gif">
 
   <h1>Elsewhere</h1>
   <ul>
