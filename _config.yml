@@ -7,4 +7,5 @@ collections:
   micro:
     output: true
 theme_config:
-  date_format: "%Y-%m-%d" 
+  date_format: "%Y-%m-%d"
+  back_home_text: ".."
