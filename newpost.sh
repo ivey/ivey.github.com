@@ -32,7 +32,12 @@ title: $title
 description: A description
 ---
 EOF
+  message="Creating post $title"
+else
+  message="Updating post $title"
 fi
+
 
 vi $filename
 git add $filename
+git commit -m $message
